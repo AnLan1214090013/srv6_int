@@ -86,6 +86,14 @@ control srv6_ingress(inout headers_t hdr,
         hdr.ipv6.next_hdr = IP_PROTO_SRV6;
     }
 
+    action insert_segment_list_1(ipv6_addr_t s1){
+        hdr.ipv6.dst_addr = s1;
+        hdr.ipv6.payload_len = hdr.ipv6.payload_len + 24;
+        insert_srh(1);
+        hdr.segment_list[0].setValid();
+        hdr.segment_list[0].sid = s1;
+    }
+
     action insert_segment_list_2(ipv6_addr_t s1, ipv6_addr_t s2){
         hdr.ipv6.dst_addr = s1;
         hdr.ipv6.payload_len = hdr.ipv6.payload_len + 40;
@@ -129,6 +137,7 @@ control srv6_ingress(inout headers_t hdr,
     		hdr.ipv6.dst_addr: lpm;
     	}
     	actions = {
+            insert_segment_list_1;
     		insert_segment_list_2;
     		insert_segment_list_3;
             insert_segment_list_4;

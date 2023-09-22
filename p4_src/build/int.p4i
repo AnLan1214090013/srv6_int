@@ -1,7 +1,7 @@
-# 1 "int.p4"
+# 1 "p4_src/int.p4"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "int.p4"
+# 1 "p4_src/int.p4"
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -113,7 +113,7 @@ extern bool static_assert(bool check, string message);
 
 /// Like the above but using a default message.
 extern bool static_assert(bool check);
-# 19 "int.p4" 2
+# 19 "p4_src/int.p4" 2
 # 1 "/usr/local/share/p4c/p4include/v1model.p4" 1
 /*
 Copyright 2013-present Barefoot Networks, Inc.
@@ -899,9 +899,9 @@ package V1Switch<H, M>(Parser<H, M> p,
                        ComputeChecksum<H, M> ck,
                        Deparser<H> dep
                        );
-# 20 "int.p4" 2
+# 20 "p4_src/int.p4" 2
 
-# 1 "include/defines.p4" 1
+# 1 "p4_src/include/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -917,7 +917,7 @@ package V1Switch<H, M>(Parser<H, M> p,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 25 "include/defines.p4"
+# 25 "p4_src/include/defines.p4"
 //srv6
 
 
@@ -932,10 +932,10 @@ typedef bit<128> ipv6_addr_t;
 typedef bit<48> mac_addr_t;
 
 const port_t CPU_PORT = 255;
-# 48 "include/defines.p4"
+# 48 "p4_src/include/defines.p4"
 //srv6 defines
-# 22 "int.p4" 2
-# 1 "include/headers.p4" 1
+# 22 "p4_src/int.p4" 2
+# 1 "p4_src/include/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -955,7 +955,7 @@ const port_t CPU_PORT = 255;
 
 
 
-# 1 "include/defines.p4" 1
+# 1 "p4_src/include/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -971,7 +971,7 @@ const port_t CPU_PORT = 255;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "include/headers.p4" 2
+# 21 "p4_src/include/headers.p4" 2
 
 @controller_header("packet_in")
 header packet_in_header_t {
@@ -1027,8 +1027,8 @@ header udp_t {
     bit<16> length_;
     bit<16> checksum;
 }
-# 23 "int.p4" 2
-# 1 "include/actions.p4" 1
+# 23 "p4_src/int.p4" 2
+# 1 "p4_src/include/actions.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1048,7 +1048,7 @@ header udp_t {
 
 
 
-# 1 "include/headers.p4" 1
+# 1 "p4_src/include/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1064,8 +1064,8 @@ header udp_t {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "include/actions.p4" 2
-# 1 "include/defines.p4" 1
+# 21 "p4_src/include/actions.p4" 2
+# 1 "p4_src/include/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1081,7 +1081,7 @@ header udp_t {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 22 "include/actions.p4" 2
+# 22 "p4_src/include/actions.p4" 2
 
 action send_to_cpu(inout standard_metadata_t standard_metadata) {
     standard_metadata.egress_spec = CPU_PORT;
@@ -1094,8 +1094,8 @@ action set_egress_port(inout standard_metadata_t standard_metadata, port_t port)
 action _drop(inout standard_metadata_t standard_metadata) {
     mark_to_drop(standard_metadata);
 }
-# 24 "int.p4" 2
-# 1 "include/int_definitions.p4" 1
+# 24 "p4_src/int.p4" 2
+# 1 "p4_src/include/int_definitions.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1116,7 +1116,7 @@ action _drop(inout standard_metadata_t standard_metadata) {
 
 
 
-# 1 "include/defines.p4" 1
+# 1 "p4_src/include/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1132,7 +1132,7 @@ action _drop(inout standard_metadata_t standard_metadata) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 22 "include/int_definitions.p4" 2
+# 22 "p4_src/include/int_definitions.p4" 2
 
 /* indicate INT at LSB of DSCP */
 const bit<6> INT_DSCP = 0x1;
@@ -1144,8 +1144,8 @@ const bit<8> INT_HEADER_LEN_WORD = 4;
 
 const bit<8> CPU_MIRROR_SESSION_ID = 250;
 const bit<32> REPORT_MIRROR_SESSION_ID = 500;
-# 25 "int.p4" 2
-# 1 "include/int_headers.p4" 1
+# 25 "p4_src/int.p4" 2
+# 1 "p4_src/include/int_headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1166,7 +1166,7 @@ const bit<32> REPORT_MIRROR_SESSION_ID = 500;
 
 
 
-# 1 "include/telemetry_report_headers.p4" 1
+# 1 "p4_src/include/telemetry_report_headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1235,7 +1235,7 @@ header_union local_report_t {
     drop_report_header_t drop_report_header;
     local_report_header_t local_report_header;
 }
-# 22 "include/int_headers.p4" 2
+# 22 "p4_src/include/int_headers.p4" 2
 
 // INT headers
 header int_header_t {
@@ -1387,8 +1387,8 @@ struct local_metadata_t {
     ipv6_addr_t next_sid;
     bit<8> ip_proto;
 }
-# 26 "int.p4" 2
-# 1 "include/packet_io.p4" 1
+# 26 "p4_src/int.p4" 2
+# 1 "p4_src/include/packet_io.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1408,7 +1408,7 @@ struct local_metadata_t {
 
 
 
-# 1 "include/headers.p4" 1
+# 1 "p4_src/include/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1424,8 +1424,8 @@ struct local_metadata_t {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "include/packet_io.p4" 2
-# 1 "include/defines.p4" 1
+# 21 "p4_src/include/packet_io.p4" 2
+# 1 "p4_src/include/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1441,7 +1441,7 @@ struct local_metadata_t {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 22 "include/packet_io.p4" 2
+# 22 "p4_src/include/packet_io.p4" 2
 
 control packetio_ingress(inout headers_t hdr,
                          inout standard_metadata_t standard_metadata) {
@@ -1463,8 +1463,8 @@ control packetio_egress(inout headers_t hdr,
         }
     }
 }
-# 27 "int.p4" 2
-# 1 "include/port_counters.p4" 1
+# 27 "p4_src/int.p4" 2
+# 1 "p4_src/include/port_counters.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1484,7 +1484,7 @@ control packetio_egress(inout headers_t hdr,
 
 
 
-# 1 "include/headers.p4" 1
+# 1 "p4_src/include/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1500,8 +1500,8 @@ control packetio_egress(inout headers_t hdr,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "include/port_counters.p4" 2
-# 1 "include/defines.p4" 1
+# 21 "p4_src/include/port_counters.p4" 2
+# 1 "p4_src/include/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1517,7 +1517,7 @@ control packetio_egress(inout headers_t hdr,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 22 "include/port_counters.p4" 2
+# 22 "p4_src/include/port_counters.p4" 2
 
 control port_counters_ingress(inout headers_t hdr,
                               inout standard_metadata_t standard_metadata) {
@@ -1538,8 +1538,8 @@ control port_counters_egress(inout headers_t hdr,
         egress_port_counter.count((bit<32>) standard_metadata.egress_port);
     }
 }
-# 28 "int.p4" 2
-# 1 "include/table0.p4" 1
+# 28 "p4_src/int.p4" 2
+# 1 "p4_src/include/table0.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1559,7 +1559,7 @@ control port_counters_egress(inout headers_t hdr,
 
 
 
-# 1 "include/headers.p4" 1
+# 1 "p4_src/include/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1575,8 +1575,8 @@ control port_counters_egress(inout headers_t hdr,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "include/table0.p4" 2
-# 1 "include/defines.p4" 1
+# 21 "p4_src/include/table0.p4" 2
+# 1 "p4_src/include/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1592,7 +1592,7 @@ control port_counters_egress(inout headers_t hdr,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 22 "include/table0.p4" 2
+# 22 "p4_src/include/table0.p4" 2
 
 control table0_control(inout headers_t hdr,
                        inout local_metadata_t local_metadata,
@@ -1630,8 +1630,8 @@ control table0_control(inout headers_t hdr,
         table0.apply();
      }
 }
-# 29 "int.p4" 2
-# 1 "include/checksums.p4" 1
+# 29 "p4_src/int.p4" 2
+# 1 "p4_src/include/checksums.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1651,7 +1651,7 @@ control table0_control(inout headers_t hdr,
 
 
 
-# 1 "include/headers.p4" 1
+# 1 "p4_src/include/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1667,7 +1667,7 @@ control table0_control(inout headers_t hdr,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "include/checksums.p4" 2
+# 21 "p4_src/include/checksums.p4" 2
 
 control verify_checksum_control(inout headers_t hdr,
                                 inout local_metadata_t local_metadata) {
@@ -1698,8 +1698,8 @@ control compute_checksum_control(inout headers_t hdr,
             hdr.report_ipv4.hdr_checksum, HashAlgorithm.csum16);
     }
 }
-# 30 "int.p4" 2
-# 1 "include/int_parser.p4" 1
+# 30 "p4_src/int.p4" 2
+# 1 "p4_src/include/int_parser.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1886,8 +1886,8 @@ control int_deparser(
         packet.emit(hdr.segment_list);
     }
 }
-# 31 "int.p4" 2
-# 1 "include/int_source.p4" 1
+# 31 "p4_src/int.p4" 2
+# 1 "p4_src/include/int_source.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2006,8 +2006,8 @@ control process_set_source_sink (
         tb_set_source_sink.apply();
     }
 }
-# 32 "int.p4" 2
-# 1 "include/int_transit.p4" 1
+# 32 "p4_src/int.p4" 2
+# 1 "p4_src/include/int_transit.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2334,8 +2334,8 @@ control process_int_outer_encap (
         }
     }
 }
-# 33 "int.p4" 2
-# 1 "include/int_sink.p4" 1
+# 33 "p4_src/int.p4" 2
+# 1 "p4_src/include/int_sink.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2391,8 +2391,8 @@ control process_int_sink (
         }
     }
 }
-# 34 "int.p4" 2
-# 1 "include/int_report.p4" 1
+# 34 "p4_src/int.p4" 2
+# 1 "p4_src/include/int_report.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2413,7 +2413,7 @@ control process_int_sink (
 
 
 
-# 1 "include/telemetry_report_headers.p4" 1
+# 1 "p4_src/include/telemetry_report_headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2431,7 +2431,7 @@ control process_int_sink (
  */
 
 /* -*- P4_16 -*- */
-# 22 "include/int_report.p4" 2
+# 22 "p4_src/include/int_report.p4" 2
 
 control process_int_report (
     inout headers_t hdr,
@@ -2509,8 +2509,8 @@ control process_int_report (
         tb_generate_report.apply();
     }
 }
-# 35 "int.p4" 2
-# 1 "include/srv6_transit.p4" 1
+# 35 "p4_src/int.p4" 2
+# 1 "p4_src/include/srv6_transit.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2530,7 +2530,7 @@ control process_int_report (
 
 
 
-# 1 "include/headers.p4" 1
+# 1 "p4_src/include/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2546,8 +2546,8 @@ control process_int_report (
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "include/srv6_transit.p4" 2
-# 1 "include/defines.p4" 1
+# 21 "p4_src/include/srv6_transit.p4" 2
+# 1 "p4_src/include/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2563,27 +2563,8 @@ control process_int_report (
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 22 "include/srv6_transit.p4" 2
-# 1 "include/int_definitions.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* -*- P4_16 -*- */
-# 23 "include/srv6_transit.p4" 2
-# 1 "include/int_headers.p4" 1
+# 22 "p4_src/include/srv6_transit.p4" 2
+# 1 "p4_src/include/int_definitions.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2601,7 +2582,26 @@ control process_int_report (
  */
 
 /* -*- P4_16 -*- */
-# 24 "include/srv6_transit.p4" 2
+# 23 "p4_src/include/srv6_transit.p4" 2
+# 1 "p4_src/include/int_headers.p4" 1
+/*
+ * Copyright 2017-present Open Networking Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* -*- P4_16 -*- */
+# 24 "p4_src/include/srv6_transit.p4" 2
 
 control srv6_ingress(inout headers_t hdr,
                 inout local_metadata_t local_metadata,
@@ -2667,6 +2667,14 @@ control srv6_ingress(inout headers_t hdr,
         hdr.ipv6.next_hdr = 8w43;
     }
 
+    action insert_segment_list_1(ipv6_addr_t s1){
+        hdr.ipv6.dst_addr = s1;
+        hdr.ipv6.payload_len = hdr.ipv6.payload_len + 24;
+        insert_srh(1);
+        hdr.segment_list[0].setValid();
+        hdr.segment_list[0].sid = s1;
+    }
+
     action insert_segment_list_2(ipv6_addr_t s1, ipv6_addr_t s2){
         hdr.ipv6.dst_addr = s1;
         hdr.ipv6.payload_len = hdr.ipv6.payload_len + 40;
@@ -2710,6 +2718,7 @@ control srv6_ingress(inout headers_t hdr,
       hdr.ipv6.dst_addr: lpm;
      }
      actions = {
+            insert_segment_list_1;
       insert_segment_list_2;
       insert_segment_list_3;
             insert_segment_list_4;
@@ -2788,7 +2797,7 @@ control srv6_egress(inout headers_t hdr,
         }
     }
 }
-# 36 "int.p4" 2
+# 36 "p4_src/int.p4" 2
 
 control int_ingress (
     inout headers_t hdr,

@@ -1,0 +1,5 @@
+table_add srv6_ingress.local_mac_table NoAction 08:00:00:00:11:00 => 
+table_add srv6_ingress.local_sid_table srv6_ingress.end fc00:a::1/64 => 
+table_add srv6_ingress.transit_table srv6_ingress.insert_segment_list_1 fc00:12::2/64 => fc00:a::1
+table_add srv6_ingress.routing_v6_table srv6_ingress.set_next_hop fc00:12::2/64 => 08:00:00:00:02:00 2
+table_add srv6_ingress.routing_v6_table srv6_ingress.set_next_hop fc00:a::2/64 => 08:00:00:00:01:00 1

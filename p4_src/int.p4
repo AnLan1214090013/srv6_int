@@ -41,16 +41,16 @@ control int_ingress (
 
     apply {
         srv6_ingress.apply(hdr, local_metadata, standard_metadata);
-        port_counters_ingress.apply(hdr, standard_metadata);
-        packetio_ingress.apply(hdr, standard_metadata);
-        table0_control.apply(hdr, local_metadata, standard_metadata);
-        process_set_source_sink.apply(hdr, local_metadata, standard_metadata);
-        if(local_metadata.int_meta.sink == 1) {
-            // clone packet for Telemetry Report
-            #ifdef __TARGET_BMV2__
-            clone(CloneType.I2E, REPORT_MIRROR_SESSION_ID);
-            #endif
-        }
+        // port_counters_ingress.apply(hdr, standard_metadata);
+        // packetio_ingress.apply(hdr, standard_metadata);
+        // table0_control.apply(hdr, local_metadata, standard_metadata);
+        // process_set_source_sink.apply(hdr, local_metadata, standard_metadata);
+        // if(local_metadata.int_meta.sink == 1) {
+        //     // clone packet for Telemetry Report
+        //     #ifdef __TARGET_BMV2__
+        //     clone(CloneType.I2E, REPORT_MIRROR_SESSION_ID);
+        //     #endif
+        // }
     }
 }
 
