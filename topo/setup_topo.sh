@@ -68,11 +68,15 @@ create_topo(){
     
 }
 
+SWITCH_PORT=8103
+
 start_switch(){
+    echo "start switch on port ${SWITCH_PORT}"
     # simple_switch --interface 0@veth1 --interface 1@veth2 p4_src/build/int.json &
     # simple_switch p4_src/build/int.json --interface 0@veth1 --interface 1@veth2  --nanolog ipc:///tmp/bm-o-log.ipc
-    simple_switch --thrift-port 8101 --log-file bmlog --log-flush -i 0@veth1 -i 1@veth2 --nanolog ipc:///tmp/bm-log.ipc p4_src/build/int.json
+    simple_switch --thrift-port ${SWITCH_PORT} --log-file bmlog --log-flush -i 0@veth1 -i 1@veth2 --nanolog ipc:///tmp/bm-log.ipc p4_src/build/int.json
     # simple_switch --thrift-port 8099 --log-console -i 0@veth1 -i 1@veth2 --nanolog ipc:///tmp/bm-log.ipc p4_src/build/int.json
+    simple_switch_CLI --thrift-port ${SWITCH_PORT} -x bash -c "table_add srv6_ingress.local_mac_table NoAction 08:00:00:00:11:00 => "
 }
 
 create_topo
