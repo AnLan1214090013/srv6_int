@@ -3457,3 +3457,1965 @@ Action entry: int_ingress.srv6_ingress.set_next_hop - 80000000100,1,
 [20:00:40.860] [bmv2] [D] [thread 374013] [34.0] [cxt 0] Pipeline 'ingress': end
 [20:00:40.860] [bmv2] [D] [thread 374013] [34.0] [cxt 0] Egress port is 511
 [20:00:40.860] [bmv2] [D] [thread 374013] [34.0] [cxt 0] Dropping packet at the end of ingress
+
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Processing packet received on port 0
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser 'parser': start
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser state 'start': key is 0000
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Bytes parsed: 0
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Extracting header 'ethernet'
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Bytes parsed: 14
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Extracting header 'ipv6'
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (17)
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Bytes parsed: 54
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser 'parser' entering state 'parse_udp'
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Extracting header 'udp'
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._l4_src_port0' from field 'udp.src_port' (1234)
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._l4_dst_port1' from field 'udp.dst_port' (4321)
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 0
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser state 'parse_udp': key is 00
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Bytes parsed: 62
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Parser 'parser': end
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Pipeline 'ingress': start
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000001100
+
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': hit with handle 0
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ethernet.dst_addr: EXACT     080000001100
+Action entry: NoAction - 
+
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Action entry is NoAction - 
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Action NoAction
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(183) Condition "hdr.ipv6.isValid()" (node_5) is true
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_sid_table'
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc000012000000000000000000000002
+
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_sid_table': miss
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Action entry is NoAction - 
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Action NoAction
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.transit_table'
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc000012000000000000000000000002
+
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Table 'int_ingress.srv6_ingress.transit_table': hit with handle 0
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc000012000000000000000000000002/64
+Action entry: int_ingress.srv6_ingress.insert_segment_list_1 - fc00000a000000000000000000000001,
+
+[11:33:32.784] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Action entry is int_ingress.srv6_ingress.insert_segment_list_1 - fc00000a000000000000000000000001,
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Action int_ingress.srv6_ingress.insert_segment_list_1
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(90) Primitive hdr.ipv6.dst_addr = s1
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(91) Primitive hdr.ipv6.payload_len = hdr.ipv6.payload_len + 24
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(78) Primitive hdr.srh.setValid()
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(79) Primitive hdr.srh.next_hdr = hdr.ipv6.next_hdr
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(80) Primitive hdr.srh.hdr_ext_len = num_segments * 2
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(81) Primitive hdr.srh.routing_type = 4
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(82) Primitive hdr.srh.segment_left = num_segments - 1
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(83) Primitive hdr.srh.last_entry = num_segments - 1
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(84) Primitive hdr.srh.flags = 0
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(85) Primitive hdr.srh.tag = 0
+[11:33:32.784] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(86) Primitive hdr.ipv6.next_hdr = 8w43
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(93) Primitive hdr.segment_list[0].setValid()
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(94) Primitive hdr.segment_list[0].sid = s1
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.routing_v6_table'
+[11:33:32.785] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000a000000000000000000000001
+
+[11:33:32.785] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Table 'int_ingress.srv6_ingress.routing_v6_table': hit with handle 1
+[11:33:32.785] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000a000000000000000000000002/64
+Action entry: int_ingress.srv6_ingress.set_next_hop - 80000000100,1,
+
+[11:33:32.785] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Action entry is int_ingress.srv6_ingress.set_next_hop - 80000000100,1,
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Action int_ingress.srv6_ingress.set_next_hop
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(46) Primitive hdr.ethernet.src_addr = hdr.ethernet.dst_addr
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(47) Primitive hdr.ethernet.dst_addr = dmac
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(48) Primitive hdr.ipv6.hop_limit = hdr.ipv6.hop_limit - 1
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(49) Primitive standard_metadata.egress_spec = port
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/srv6_transit.p4(194) Condition "hdr.ipv6.hop_limit == 0" (node_11) is false
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Applying table 'tbl_port_counters29'
+[11:33:32.785] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Looking up key:
+
+[11:33:32.785] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Table 'tbl_port_counters29': miss
+[11:33:32.785] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Action entry is port_counters29 - 
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Action port_counters29
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 0
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[11:33:32.785] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0000
+* hdr.ethernet.src_addr         : 080000001100
+* hdr.ethernet.dst_addr         : 080000000100
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 04d2
+* local_metadata.l4_dst_port    : 10e1
+
+[11:33:32.785] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[11:33:32.785] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Action entry is _drop - 
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Action _drop
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.785] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [35.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[11:33:32.786] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 04d2
+* local_metadata.l4_dst_port: 10e1
+
+[11:33:32.786] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[11:33:32.786] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Action entry is NoAction - 
+[11:33:32.786] [bmv2] [T] [thread 374013] [35.0] [cxt 0] Action NoAction
+[11:33:32.786] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Pipeline 'ingress': end
+[11:33:32.786] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Egress port is 511
+[11:33:32.786] [bmv2] [D] [thread 374013] [35.0] [cxt 0] Dropping packet at the end of ingress
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Processing packet received on port 1
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser 'parser': start
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser state 'start': key is 0001
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Bytes parsed: 0
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Extracting header 'ethernet'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Bytes parsed: 14
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Extracting header 'ipv6'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (17)
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser state 'parse_ipv6': key is 11
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Bytes parsed: 54
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser 'parser' entering state 'parse_udp'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Extracting header 'udp'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._l4_src_port0' from field 'udp.src_port' (1234)
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._l4_dst_port1' from field 'udp.dst_port' (4321)
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 0
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser state 'parse_udp': key is 00
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Bytes parsed: 62
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Parser 'parser': end
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Pipeline 'ingress': start
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000000200
+
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Action entry is NoAction - 
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Action NoAction
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Applying table 'tbl_port_counters29'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Looking up key:
+
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Table 'tbl_port_counters29': miss
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Action entry is port_counters29 - 
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Action port_counters29
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000002200
+* hdr.ethernet.dst_addr         : 080000000200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 04d2
+* local_metadata.l4_dst_port    : 10e1
+
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Action entry is _drop - 
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Action _drop
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[11:33:32.786] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 04d2
+* local_metadata.l4_dst_port: 10e1
+
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[11:33:32.786] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Action entry is NoAction - 
+[11:33:32.787] [bmv2] [T] [thread 374013] [36.0] [cxt 0] Action NoAction
+[11:33:32.787] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Pipeline 'ingress': end
+[11:33:32.787] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Egress port is 511
+[11:33:32.787] [bmv2] [D] [thread 374013] [36.0] [cxt 0] Dropping packet at the end of ingress
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Processing packet received on port 0
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser 'parser': start
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser state 'start': key is 0000
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Bytes parsed: 0
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Extracting header 'ethernet'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Bytes parsed: 14
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Extracting header 'ipv6'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (43)
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser state 'parse_ipv6': key is 2b
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Bytes parsed: 54
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser 'parser' entering state 'parse_srv6'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Extracting header 'srh'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser state 'parse_srv6' has no switch, going to default next state
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Bytes parsed: 62
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Extracting to header stack 0, next header is 29
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser set: setting field 'scalars.tmp_3' from expression, new value is 1
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser state 'parse_segment_list': key is 01
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Bytes parsed: 78
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser 'parser' entering state 'mark_next_sid'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._next_sid11' from expression, new value is 334965455730080425114402755126086336513
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser state 'mark_next_sid' has no switch, going to default next state
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Bytes parsed: 78
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser set: setting field 'scalars.tmp_4' from expression, new value is 1
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser state 'check_last_sid': key is 01
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Bytes parsed: 78
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser 'parser' entering state 'parse_srv6_next_hdr'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser state 'parse_srv6_next_hdr': key is 3b
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Bytes parsed: 78
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Parser 'parser': end
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Pipeline 'ingress': start
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000001100
+
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': hit with handle 0
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ethernet.dst_addr: EXACT     080000001100
+Action entry: NoAction - 
+
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Action entry is NoAction - 
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Action NoAction
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(183) Condition "hdr.ipv6.isValid()" (node_5) is true
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_sid_table'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc000012000000000000000000000002
+
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_sid_table': miss
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Action entry is NoAction - 
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Action NoAction
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.transit_table'
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc000012000000000000000000000002
+
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Table 'int_ingress.srv6_ingress.transit_table': hit with handle 0
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc000012000000000000000000000002/64
+Action entry: int_ingress.srv6_ingress.insert_segment_list_1 - fc00000a000000000000000000000001,
+
+[13:03:51.924] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Action entry is int_ingress.srv6_ingress.insert_segment_list_1 - fc00000a000000000000000000000001,
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Action int_ingress.srv6_ingress.insert_segment_list_1
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(90) Primitive hdr.ipv6.dst_addr = s1
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(91) Primitive hdr.ipv6.payload_len = hdr.ipv6.payload_len + 24
+[13:03:51.924] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(78) Primitive hdr.srh.setValid()
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(79) Primitive hdr.srh.next_hdr = hdr.ipv6.next_hdr
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(80) Primitive hdr.srh.hdr_ext_len = num_segments * 2
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(81) Primitive hdr.srh.routing_type = 4
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(82) Primitive hdr.srh.segment_left = num_segments - 1
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(83) Primitive hdr.srh.last_entry = num_segments - 1
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(84) Primitive hdr.srh.flags = 0
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(85) Primitive hdr.srh.tag = 0
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(86) Primitive hdr.ipv6.next_hdr = 8w43
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(93) Primitive hdr.segment_list[0].setValid()
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(94) Primitive hdr.segment_list[0].sid = s1
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.routing_v6_table'
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000a000000000000000000000001
+
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Table 'int_ingress.srv6_ingress.routing_v6_table': hit with handle 1
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000a000000000000000000000002/64
+Action entry: int_ingress.srv6_ingress.set_next_hop - 80000000100,1,
+
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Action entry is int_ingress.srv6_ingress.set_next_hop - 80000000100,1,
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Action int_ingress.srv6_ingress.set_next_hop
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(46) Primitive hdr.ethernet.src_addr = hdr.ethernet.dst_addr
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(47) Primitive hdr.ethernet.dst_addr = dmac
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(48) Primitive hdr.ipv6.hop_limit = hdr.ipv6.hop_limit - 1
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(49) Primitive standard_metadata.egress_spec = port
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/srv6_transit.p4(194) Condition "hdr.ipv6.hop_limit == 0" (node_11) is false
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Looking up key:
+
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Action entry is port_counters29 - 
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Action port_counters29
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 0
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0000
+* hdr.ethernet.src_addr         : 080000001100
+* hdr.ethernet.dst_addr         : 080000000100
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Action entry is _drop - 
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Action _drop
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Action entry is NoAction - 
+[13:03:51.925] [bmv2] [T] [thread 374013] [43.0] [cxt 0] Action NoAction
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Pipeline 'ingress': end
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Egress port is 511
+[13:03:51.925] [bmv2] [D] [thread 374013] [43.0] [cxt 0] Dropping packet at the end of ingress
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Processing packet received on port 1
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser 'parser': start
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser state 'start': key is 0001
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Bytes parsed: 0
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Extracting header 'ethernet'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Bytes parsed: 14
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Extracting header 'ipv6'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (43)
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser state 'parse_ipv6': key is 2b
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Bytes parsed: 54
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser 'parser' entering state 'parse_srv6'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Extracting header 'srh'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser state 'parse_srv6' has no switch, going to default next state
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Bytes parsed: 62
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Extracting to header stack 0, next header is 29
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser set: setting field 'scalars.tmp_3' from expression, new value is 1
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser state 'parse_segment_list': key is 01
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Bytes parsed: 78
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser 'parser' entering state 'mark_next_sid'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._next_sid11' from expression, new value is 334965455730080425114402755126086336513
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser state 'mark_next_sid' has no switch, going to default next state
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Bytes parsed: 78
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser set: setting field 'scalars.tmp_4' from expression, new value is 1
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser state 'check_last_sid': key is 01
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Bytes parsed: 78
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser 'parser' entering state 'parse_srv6_next_hdr'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser state 'parse_srv6_next_hdr': key is 3b
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Bytes parsed: 78
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Parser 'parser': end
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Pipeline 'ingress': start
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000000200
+
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Action entry is NoAction - 
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Action NoAction
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Looking up key:
+
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Action entry is port_counters29 - 
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Action port_counters29
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000002200
+* hdr.ethernet.dst_addr         : 080000000200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:03:51.925] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Action entry is _drop - 
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Action _drop
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.925] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:03:51.926] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:03:51.926] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:03:51.926] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Action entry is NoAction - 
+[13:03:51.926] [bmv2] [T] [thread 374013] [44.0] [cxt 0] Action NoAction
+[13:03:51.926] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Pipeline 'ingress': end
+[13:03:51.926] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Egress port is 511
+[13:03:51.926] [bmv2] [D] [thread 374013] [44.0] [cxt 0] Dropping packet at the end of ingress
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Processing packet received on port 1
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Parser 'parser': start
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Parser state 'start': key is 0001
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Bytes parsed: 0
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Extracting header 'ethernet'
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Bytes parsed: 14
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Extracting header 'ipv6'
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Bytes parsed: 54
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Parser 'parser': end
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Pipeline 'ingress': start
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000000200
+
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Action entry is NoAction - 
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Action NoAction
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Looking up key:
+
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Action entry is port_counters29 - 
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Action port_counters29
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000002200
+* hdr.ethernet.dst_addr         : 080000000200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:03:57.083] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Action entry is _drop - 
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Action _drop
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.083] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:03:57.084] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:03:57.084] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:03:57.084] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Action entry is NoAction - 
+[13:03:57.084] [bmv2] [T] [thread 374013] [45.0] [cxt 0] Action NoAction
+[13:03:57.084] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Pipeline 'ingress': end
+[13:03:57.084] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Egress port is 511
+[13:03:57.084] [bmv2] [D] [thread 374013] [45.0] [cxt 0] Dropping packet at the end of ingress
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Processing packet received on port 1
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Parser 'parser': start
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Parser state 'start': key is 0001
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Bytes parsed: 0
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Extracting header 'ethernet'
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Bytes parsed: 14
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Extracting header 'ipv6'
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Bytes parsed: 54
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Parser 'parser': end
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Pipeline 'ingress': start
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000002200
+
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Action entry is NoAction - 
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Action NoAction
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Looking up key:
+
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Action entry is port_counters29 - 
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Action port_counters29
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000000200
+* hdr.ethernet.dst_addr         : 080000002200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Action entry is _drop - 
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Action _drop
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Action entry is NoAction - 
+[13:03:57.084] [bmv2] [T] [thread 374013] [46.0] [cxt 0] Action NoAction
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Pipeline 'ingress': end
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Egress port is 511
+[13:03:57.084] [bmv2] [D] [thread 374013] [46.0] [cxt 0] Dropping packet at the end of ingress
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Processing packet received on port 1
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Parser 'parser': start
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Parser state 'start': key is 0001
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Bytes parsed: 0
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Extracting header 'ethernet'
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Bytes parsed: 14
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Extracting header 'ipv6'
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Bytes parsed: 54
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Parser 'parser': end
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Pipeline 'ingress': start
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000002200
+
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Action entry is NoAction - 
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Action NoAction
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Looking up key:
+
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Action entry is port_counters29 - 
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Action port_counters29
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000000200
+* hdr.ethernet.dst_addr         : 080000002200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Action entry is _drop - 
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Action _drop
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Action entry is NoAction - 
+[13:04:02.203] [bmv2] [T] [thread 374013] [47.0] [cxt 0] Action NoAction
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Pipeline 'ingress': end
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Egress port is 511
+[13:04:02.203] [bmv2] [D] [thread 374013] [47.0] [cxt 0] Dropping packet at the end of ingress
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Processing packet received on port 1
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Parser 'parser': start
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Parser state 'start': key is 0001
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Bytes parsed: 0
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Extracting header 'ethernet'
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Bytes parsed: 14
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Extracting header 'ipv6'
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Bytes parsed: 54
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Parser 'parser': end
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Pipeline 'ingress': start
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000000200
+
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Action entry is NoAction - 
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Action NoAction
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Looking up key:
+
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Action entry is port_counters29 - 
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Action port_counters29
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000002200
+* hdr.ethernet.dst_addr         : 080000000200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:04:02.203] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Action entry is _drop - 
+[13:04:02.203] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Action _drop
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:04:02.204] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:04:02.204] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:04:02.204] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Action entry is NoAction - 
+[13:04:02.204] [bmv2] [T] [thread 374013] [48.0] [cxt 0] Action NoAction
+[13:04:02.204] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Pipeline 'ingress': end
+[13:04:02.204] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Egress port is 511
+[13:04:02.204] [bmv2] [D] [thread 374013] [48.0] [cxt 0] Dropping packet at the end of ingress
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Processing packet received on port 1
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Parser 'parser': start
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Parser state 'start': key is 0001
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Bytes parsed: 0
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Extracting header 'ethernet'
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Bytes parsed: 14
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Extracting header 'ipv6'
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Bytes parsed: 54
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Parser 'parser': end
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Pipeline 'ingress': start
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000000200
+
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Action entry is NoAction - 
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Action NoAction
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Looking up key:
+
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Action entry is port_counters29 - 
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Action port_counters29
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000002200
+* hdr.ethernet.dst_addr         : 080000000200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Action entry is _drop - 
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Action _drop
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Action entry is NoAction - 
+[13:04:07.323] [bmv2] [T] [thread 374013] [49.0] [cxt 0] Action NoAction
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Pipeline 'ingress': end
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Egress port is 511
+[13:04:07.323] [bmv2] [D] [thread 374013] [49.0] [cxt 0] Dropping packet at the end of ingress
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Processing packet received on port 1
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Parser 'parser': start
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Parser state 'start': key is 0001
+[13:04:07.323] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Bytes parsed: 0
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Extracting header 'ethernet'
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:04:07.323] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Bytes parsed: 14
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Extracting header 'ipv6'
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:04:07.323] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Bytes parsed: 54
+[13:04:07.323] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Parser 'parser': end
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Pipeline 'ingress': start
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000002200
+
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Action entry is NoAction - 
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Action NoAction
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Looking up key:
+
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Action entry is port_counters29 - 
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Action port_counters29
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000000200
+* hdr.ethernet.dst_addr         : 080000002200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Action entry is _drop - 
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Action _drop
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Action entry is NoAction - 
+[13:04:07.324] [bmv2] [T] [thread 374013] [50.0] [cxt 0] Action NoAction
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Pipeline 'ingress': end
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Egress port is 511
+[13:04:07.324] [bmv2] [D] [thread 374013] [50.0] [cxt 0] Dropping packet at the end of ingress
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Processing packet received on port 0
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser 'parser': start
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser state 'start': key is 0000
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Bytes parsed: 0
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Extracting header 'ethernet'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Bytes parsed: 14
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Extracting header 'ipv6'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (43)
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser state 'parse_ipv6': key is 2b
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Bytes parsed: 54
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser 'parser' entering state 'parse_srv6'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Extracting header 'srh'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser state 'parse_srv6' has no switch, going to default next state
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Bytes parsed: 62
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Extracting to header stack 0, next header is 29
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser set: setting field 'scalars.tmp_3' from expression, new value is 0
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser state 'parse_segment_list': key is 00
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Bytes parsed: 78
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser set: setting field 'scalars.tmp_4' from expression, new value is 1
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser state 'check_last_sid': key is 01
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Bytes parsed: 78
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser 'parser' entering state 'parse_srv6_next_hdr'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser state 'parse_srv6_next_hdr': key is 3b
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Bytes parsed: 78
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Parser 'parser': end
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Pipeline 'ingress': start
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000001100
+
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': hit with handle 0
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ethernet.dst_addr: EXACT     080000001100
+Action entry: NoAction - 
+
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Action entry is NoAction - 
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Action NoAction
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(183) Condition "hdr.ipv6.isValid()" (node_5) is true
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_sid_table'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc000012000000000000000000000002
+
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_sid_table': miss
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Action entry is NoAction - 
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Action NoAction
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.transit_table'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc000012000000000000000000000002
+
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Table 'int_ingress.srv6_ingress.transit_table': hit with handle 0
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc000012000000000000000000000002/64
+Action entry: int_ingress.srv6_ingress.insert_segment_list_1 - fc00000a000000000000000000000001,
+
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Action entry is int_ingress.srv6_ingress.insert_segment_list_1 - fc00000a000000000000000000000001,
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Action int_ingress.srv6_ingress.insert_segment_list_1
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(90) Primitive hdr.ipv6.dst_addr = s1
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(91) Primitive hdr.ipv6.payload_len = hdr.ipv6.payload_len + 24
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(78) Primitive hdr.srh.setValid()
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(79) Primitive hdr.srh.next_hdr = hdr.ipv6.next_hdr
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(80) Primitive hdr.srh.hdr_ext_len = num_segments * 2
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(81) Primitive hdr.srh.routing_type = 4
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(82) Primitive hdr.srh.segment_left = num_segments - 1
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(83) Primitive hdr.srh.last_entry = num_segments - 1
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(84) Primitive hdr.srh.flags = 0
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(85) Primitive hdr.srh.tag = 0
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(86) Primitive hdr.ipv6.next_hdr = 8w43
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(93) Primitive hdr.segment_list[0].setValid()
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(94) Primitive hdr.segment_list[0].sid = s1
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.routing_v6_table'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000a000000000000000000000001
+
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Table 'int_ingress.srv6_ingress.routing_v6_table': hit with handle 1
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000a000000000000000000000002/64
+Action entry: int_ingress.srv6_ingress.set_next_hop - 80000000100,1,
+
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Action entry is int_ingress.srv6_ingress.set_next_hop - 80000000100,1,
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Action int_ingress.srv6_ingress.set_next_hop
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(46) Primitive hdr.ethernet.src_addr = hdr.ethernet.dst_addr
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(47) Primitive hdr.ethernet.dst_addr = dmac
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(48) Primitive hdr.ipv6.hop_limit = hdr.ipv6.hop_limit - 1
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(49) Primitive standard_metadata.egress_spec = port
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/srv6_transit.p4(194) Condition "hdr.ipv6.hop_limit == 0" (node_11) is false
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Looking up key:
+
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Action entry is port_counters29 - 
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Action port_counters29
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 0
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0000
+* hdr.ethernet.src_addr         : 080000001100
+* hdr.ethernet.dst_addr         : 080000000100
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:08:53.636] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Action entry is _drop - 
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Action _drop
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.636] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:08:53.637] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:08:53.637] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:08:53.637] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Action entry is NoAction - 
+[13:08:53.637] [bmv2] [T] [thread 374013] [51.0] [cxt 0] Action NoAction
+[13:08:53.637] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Pipeline 'ingress': end
+[13:08:53.637] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Egress port is 511
+[13:08:53.637] [bmv2] [D] [thread 374013] [51.0] [cxt 0] Dropping packet at the end of ingress
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Processing packet received on port 1
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser 'parser': start
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser state 'start': key is 0001
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Bytes parsed: 0
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Extracting header 'ethernet'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Bytes parsed: 14
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Extracting header 'ipv6'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (43)
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser state 'parse_ipv6': key is 2b
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Bytes parsed: 54
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser 'parser' entering state 'parse_srv6'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Extracting header 'srh'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser state 'parse_srv6' has no switch, going to default next state
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Bytes parsed: 62
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Extracting to header stack 0, next header is 29
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser set: setting field 'scalars.tmp_3' from expression, new value is 0
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser state 'parse_segment_list': key is 00
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Bytes parsed: 78
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser set: setting field 'scalars.tmp_4' from expression, new value is 1
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser state 'check_last_sid': key is 01
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Bytes parsed: 78
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser 'parser' entering state 'parse_srv6_next_hdr'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser state 'parse_srv6_next_hdr': key is 3b
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Bytes parsed: 78
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Parser 'parser': end
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Pipeline 'ingress': start
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000000200
+
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Action entry is NoAction - 
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Action NoAction
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Looking up key:
+
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Action entry is port_counters29 - 
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Action port_counters29
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000002200
+* hdr.ethernet.dst_addr         : 080000000200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Action entry is _drop - 
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Action _drop
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Action entry is NoAction - 
+[13:08:53.637] [bmv2] [T] [thread 374013] [52.0] [cxt 0] Action NoAction
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Pipeline 'ingress': end
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Egress port is 511
+[13:08:53.637] [bmv2] [D] [thread 374013] [52.0] [cxt 0] Dropping packet at the end of ingress
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Processing packet received on port 1
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Parser 'parser': start
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Parser state 'start': key is 0001
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Bytes parsed: 0
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Extracting header 'ethernet'
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Bytes parsed: 14
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Extracting header 'ipv6'
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Bytes parsed: 54
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Parser 'parser': end
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Pipeline 'ingress': start
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000000200
+
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Action entry is NoAction - 
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Action NoAction
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Looking up key:
+
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Action entry is port_counters29 - 
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Action port_counters29
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000002200
+* hdr.ethernet.dst_addr         : 080000000200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Action entry is _drop - 
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Action _drop
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Action entry is NoAction - 
+[13:08:58.651] [bmv2] [T] [thread 374013] [53.0] [cxt 0] Action NoAction
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Pipeline 'ingress': end
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Egress port is 511
+[13:08:58.651] [bmv2] [D] [thread 374013] [53.0] [cxt 0] Dropping packet at the end of ingress
+[13:08:58.651] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Processing packet received on port 1
+[13:08:58.651] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Parser 'parser': start
+[13:08:58.651] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:08:58.651] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Parser state 'start': key is 0001
+[13:08:58.651] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Bytes parsed: 0
+[13:08:58.651] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:08:58.651] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Extracting header 'ethernet'
+[13:08:58.651] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:08:58.651] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Bytes parsed: 14
+[13:08:58.651] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:08:58.651] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Extracting header 'ipv6'
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Bytes parsed: 54
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Parser 'parser': end
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Pipeline 'ingress': start
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000002200
+
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Action entry is NoAction - 
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Action NoAction
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Looking up key:
+
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Action entry is port_counters29 - 
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Action port_counters29
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000000200
+* hdr.ethernet.dst_addr         : 080000002200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Action entry is _drop - 
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Action _drop
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Action entry is NoAction - 
+[13:08:58.652] [bmv2] [T] [thread 374013] [54.0] [cxt 0] Action NoAction
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Pipeline 'ingress': end
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Egress port is 511
+[13:08:58.652] [bmv2] [D] [thread 374013] [54.0] [cxt 0] Dropping packet at the end of ingress
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Processing packet received on port 1
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Parser 'parser': start
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Parser state 'start': key is 0001
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Bytes parsed: 0
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Extracting header 'ethernet'
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Bytes parsed: 14
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Extracting header 'ipv6'
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Bytes parsed: 54
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Parser 'parser': end
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Pipeline 'ingress': start
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000002200
+
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Action entry is NoAction - 
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Action NoAction
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Looking up key:
+
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Action entry is port_counters29 - 
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Action port_counters29
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000000200
+* hdr.ethernet.dst_addr         : 080000002200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Action entry is _drop - 
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Action _drop
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Action entry is NoAction - 
+[13:09:03.771] [bmv2] [T] [thread 374013] [55.0] [cxt 0] Action NoAction
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Pipeline 'ingress': end
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Egress port is 511
+[13:09:03.771] [bmv2] [D] [thread 374013] [55.0] [cxt 0] Dropping packet at the end of ingress
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Processing packet received on port 1
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Parser 'parser': start
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Parser state 'start': key is 0001
+[13:09:03.771] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Bytes parsed: 0
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Extracting header 'ethernet'
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:09:03.771] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Bytes parsed: 14
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Extracting header 'ipv6'
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:09:03.771] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Bytes parsed: 54
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Parser 'parser': end
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Pipeline 'ingress': start
+[13:09:03.771] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:09:03.771] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000000200
+
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Action entry is NoAction - 
+[13:09:03.771] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Action NoAction
+[13:09:03.771] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Looking up key:
+
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:09:03.771] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Action entry is port_counters29 - 
+[13:09:03.771] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Action port_counters29
+[13:09:03.771] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:09:03.772] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000002200
+* hdr.ethernet.dst_addr         : 080000000200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:09:03.772] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:09:03.772] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Action entry is _drop - 
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Action _drop
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:09:03.772] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:09:03.772] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:09:03.772] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Action entry is NoAction - 
+[13:09:03.772] [bmv2] [T] [thread 374013] [56.0] [cxt 0] Action NoAction
+[13:09:03.772] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Pipeline 'ingress': end
+[13:09:03.772] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Egress port is 511
+[13:09:03.772] [bmv2] [D] [thread 374013] [56.0] [cxt 0] Dropping packet at the end of ingress
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Processing packet received on port 1
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Parser 'parser': start
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Parser state 'start': key is 0001
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Bytes parsed: 0
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Extracting header 'ethernet'
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Bytes parsed: 14
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Extracting header 'ipv6'
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Bytes parsed: 54
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Parser 'parser': end
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Pipeline 'ingress': start
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000000200
+
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Action entry is NoAction - 
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Action NoAction
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Looking up key:
+
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Action entry is port_counters29 - 
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Action port_counters29
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000002200
+* hdr.ethernet.dst_addr         : 080000000200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Action entry is _drop - 
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Action _drop
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Action entry is NoAction - 
+[13:09:08.891] [bmv2] [T] [thread 374013] [57.0] [cxt 0] Action NoAction
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Pipeline 'ingress': end
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Egress port is 511
+[13:09:08.891] [bmv2] [D] [thread 374013] [57.0] [cxt 0] Dropping packet at the end of ingress
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Processing packet received on port 1
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Parser 'parser': start
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Parser 'parser' entering state 'start'
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Parser state 'start': key is 0001
+[13:09:08.891] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Bytes parsed: 0
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Extracting header 'ethernet'
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[13:09:08.891] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Bytes parsed: 14
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Extracting header 'ipv6'
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto12' from field 'ipv6.next_hdr' (58)
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[13:09:08.891] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Bytes parsed: 54
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Parser 'parser': end
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Pipeline 'ingress': start
+[13:09:08.891] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/srv6_transit.p4(166) Condition "standard_metadata.ingress_port == CPU_PORT" (node_2) is false
+[13:09:08.891] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Applying table 'int_ingress.srv6_ingress.local_mac_table'
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000002200
+
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Table 'int_ingress.srv6_ingress.local_mac_table': miss
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Action entry is NoAction - 
+[13:09:08.891] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Action NoAction
+[13:09:08.891] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Applying table 'tbl_port_counters29'
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Looking up key:
+
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Table 'tbl_port_counters29': miss
+[13:09:08.891] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Action entry is port_counters29 - 
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Action port_counters29
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive (bit<32>) standard_metadata.ingress_port
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/port_counters.p4(29) Primitive ingress_port_counter.count((bit<32>) standard_metadata.ingress_port)
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Updated counter 'int_ingress.port_counters_ingress.ingress_port_counter' at index 1
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/packet_io.p4(26) Condition "standard_metadata.ingress_port == CPU_PORT" (node_14) is false
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Applying table 'int_ingress.table0_control.table0'
+[13:09:08.892] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Looking up key:
+* standard_metadata.ingress_port: 0001
+* hdr.ethernet.src_addr         : 080000000200
+* hdr.ethernet.dst_addr         : 080000002200
+* hdr.ethernet.ether_type       : 86dd
+* hdr.ipv4.src_addr             : 00000000
+* hdr.ipv4.dst_addr             : 00000000
+* hdr.ipv4.protocol             : 00
+* local_metadata.l4_src_port    : 0000
+* local_metadata.l4_dst_port    : 0000
+
+[13:09:08.892] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Table 'int_ingress.table0_control.table0': miss
+[13:09:08.892] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Action entry is _drop - 
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Action _drop
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(32) Primitive mark_to_drop(standard_metadata)
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] p4_src/include/actions.p4(31) Primitive standard_metadata) { ...
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Applying table 'int_ingress.process_set_source_sink.tb_set_source_sink'
+[13:09:08.892] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Looking up key:
+* hdr.ipv4.src_addr         : 00000000
+* hdr.ipv4.dst_addr         : 00000000
+* local_metadata.l4_src_port: 0000
+* local_metadata.l4_dst_port: 0000
+
+[13:09:08.892] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Table 'int_ingress.process_set_source_sink.tb_set_source_sink': miss
+[13:09:08.892] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Action entry is NoAction - 
+[13:09:08.892] [bmv2] [T] [thread 374013] [58.0] [cxt 0] Action NoAction
+[13:09:08.892] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Pipeline 'ingress': end
+[13:09:08.892] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Egress port is 511
+[13:09:08.892] [bmv2] [D] [thread 374013] [58.0] [cxt 0] Dropping packet at the end of ingress
