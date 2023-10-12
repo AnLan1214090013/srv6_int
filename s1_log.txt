@@ -1,0 +1,1387 @@
+[18:09:27.065] [bmv2] [D] [thread 882998] Set default default entry for table 'tbl_srv6_int_ingress_set_next_int_header': snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:27.065] [bmv2] [D] [thread 882998] Set default default entry for table 'tbl_srv6_int_transit172': srv6_int_transit172 - 
+[18:09:27.065] [bmv2] [D] [thread 882998] Set default default entry for table 'snt_ingress.srv6_int_ingress.local_mac_table': NoAction - 
+[18:09:27.065] [bmv2] [D] [thread 882998] Set default default entry for table 'snt_ingress.srv6_int_ingress.local_sid_table': NoAction - 
+[18:09:27.065] [bmv2] [D] [thread 882998] Set default default entry for table 'tbl_srv6_int_ingress_srv6_pop': snt_ingress.srv6_int_ingress.srv6_pop - 
+[18:09:27.065] [bmv2] [D] [thread 882998] Set default default entry for table 'snt_ingress.srv6_int_ingress.transit_table': NoAction - 
+[18:09:27.066] [bmv2] [D] [thread 882998] Set default default entry for table 'snt_ingress.srv6_int_ingress.routing_v6_table': NoAction - 
+[18:09:27.066] [bmv2] [D] [thread 882998] Set default default entry for table 'tbl_srv6_int_ingress_drop': snt_ingress.srv6_int_ingress.drop - 
+[18:09:27.066] [bmv2] [D] [thread 882998] Set default default entry for table 'tbl_srv6_int_transit243': srv6_int_transit243 - 
+[18:09:27.066] [bmv2] [D] [thread 882998] Set default default entry for table 'snt_egress.srv6_int_egress.swtrace': NoAction - 
+[18:09:27.070] [bmv2] [D] [thread 882998] Adding interface veth1 as port 0
+[18:09:27.107] [bmv2] [D] [thread 882998] Adding interface veth2 as port 1
+[18:09:27.146] [bmv2] [I] [thread 882998] Starting Thrift server on port 8001
+[18:09:27.146] [bmv2] [I] [thread 882998] Thrift server was started
+[18:09:27.147] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Processing packet received on port 0
+[18:09:27.147] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Parser 'parser': start
+[18:09:27.147] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:27.147] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Parser state 'start': key is 0000
+[18:09:27.147] [bmv2] [T] [thread 883006] [0.0] [cxt 0] Bytes parsed: 0
+[18:09:27.147] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:27.147] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Extracting header 'ethernet'
+[18:09:27.147] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:27.147] [bmv2] [T] [thread 883006] [0.0] [cxt 0] Bytes parsed: 14
+[18:09:27.147] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:27.147] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Extracting header 'ipv6'
+[18:09:27.147] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:27.148] [bmv2] [T] [thread 883006] [0.0] [cxt 0] Bytes parsed: 54
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Parser 'parser': end
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Pipeline 'ingress': start
+[18:09:27.148] [bmv2] [T] [thread 883006] [0.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Looking up key:
+
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:27.148] [bmv2] [T] [thread 883006] [0.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:27.148] [bmv2] [T] [thread 883006] [0.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:27.148] [bmv2] [T] [thread 883006] [0.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:27.148] [bmv2] [T] [thread 883006] [0.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Action entry is NoAction - 
+[18:09:27.148] [bmv2] [T] [thread 883006] [0.0] [cxt 0] Action NoAction
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Pipeline 'ingress': end
+[18:09:27.148] [bmv2] [D] [thread 883006] [0.0] [cxt 0] Egress port is 0
+[18:09:27.148] [bmv2] [D] [thread 883007] [0.0] [cxt 0] Pipeline 'egress': start
+[18:09:27.148] [bmv2] [T] [thread 883007] [0.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:27.148] [bmv2] [T] [thread 883007] [0.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:27.148] [bmv2] [D] [thread 883007] [0.0] [cxt 0] Pipeline 'egress': end
+[18:09:27.148] [bmv2] [D] [thread 883007] [0.0] [cxt 0] Deparser 'deparser': start
+[18:09:27.148] [bmv2] [D] [thread 883007] [0.0] [cxt 0] Updating checksum 'cksum'
+[18:09:27.148] [bmv2] [D] [thread 883007] [0.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:27.148] [bmv2] [D] [thread 883007] [0.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:27.148] [bmv2] [D] [thread 883007] [0.0] [cxt 0] Deparser 'deparser': end
+[18:09:27.148] [bmv2] [D] [thread 883011] [0.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Processing packet received on port 0
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Parser 'parser': start
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Parser state 'start': key is 0000
+[18:09:27.307] [bmv2] [T] [thread 883006] [1.0] [cxt 0] Bytes parsed: 0
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Extracting header 'ethernet'
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:27.307] [bmv2] [T] [thread 883006] [1.0] [cxt 0] Bytes parsed: 14
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Extracting header 'ipv6'
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:27.307] [bmv2] [T] [thread 883006] [1.0] [cxt 0] Bytes parsed: 54
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Parser 'parser': end
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Pipeline 'ingress': start
+[18:09:27.307] [bmv2] [T] [thread 883006] [1.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Looking up key:
+
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:27.307] [bmv2] [T] [thread 883006] [1.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:27.307] [bmv2] [T] [thread 883006] [1.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:27.307] [bmv2] [T] [thread 883006] [1.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:27.307] [bmv2] [T] [thread 883006] [1.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Action entry is NoAction - 
+[18:09:27.307] [bmv2] [T] [thread 883006] [1.0] [cxt 0] Action NoAction
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Pipeline 'ingress': end
+[18:09:27.307] [bmv2] [D] [thread 883006] [1.0] [cxt 0] Egress port is 0
+[18:09:27.307] [bmv2] [D] [thread 883007] [1.0] [cxt 0] Pipeline 'egress': start
+[18:09:27.307] [bmv2] [T] [thread 883007] [1.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:27.307] [bmv2] [T] [thread 883007] [1.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:27.307] [bmv2] [D] [thread 883007] [1.0] [cxt 0] Pipeline 'egress': end
+[18:09:27.307] [bmv2] [D] [thread 883007] [1.0] [cxt 0] Deparser 'deparser': start
+[18:09:27.307] [bmv2] [D] [thread 883007] [1.0] [cxt 0] Updating checksum 'cksum'
+[18:09:27.307] [bmv2] [D] [thread 883007] [1.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:27.307] [bmv2] [D] [thread 883007] [1.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:27.307] [bmv2] [D] [thread 883007] [1.0] [cxt 0] Deparser 'deparser': end
+[18:09:27.307] [bmv2] [D] [thread 883011] [1.0] [cxt 0] Transmitting packet of size 150 out of port 0
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Processing packet received on port 1
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Parser 'parser': start
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Parser state 'start': key is 0001
+[18:09:27.486] [bmv2] [T] [thread 883006] [2.0] [cxt 0] Bytes parsed: 0
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Extracting header 'ethernet'
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:27.486] [bmv2] [T] [thread 883006] [2.0] [cxt 0] Bytes parsed: 14
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Extracting header 'ipv6'
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:27.486] [bmv2] [T] [thread 883006] [2.0] [cxt 0] Bytes parsed: 54
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Parser 'parser': end
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Pipeline 'ingress': start
+[18:09:27.486] [bmv2] [T] [thread 883006] [2.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Looking up key:
+
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:27.486] [bmv2] [T] [thread 883006] [2.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:27.486] [bmv2] [T] [thread 883006] [2.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:27.486] [bmv2] [T] [thread 883006] [2.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:27.486] [bmv2] [T] [thread 883006] [2.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Action entry is NoAction - 
+[18:09:27.486] [bmv2] [T] [thread 883006] [2.0] [cxt 0] Action NoAction
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Pipeline 'ingress': end
+[18:09:27.486] [bmv2] [D] [thread 883006] [2.0] [cxt 0] Egress port is 0
+[18:09:27.486] [bmv2] [D] [thread 883007] [2.0] [cxt 0] Pipeline 'egress': start
+[18:09:27.486] [bmv2] [T] [thread 883007] [2.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:27.486] [bmv2] [T] [thread 883007] [2.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:27.486] [bmv2] [D] [thread 883007] [2.0] [cxt 0] Pipeline 'egress': end
+[18:09:27.486] [bmv2] [D] [thread 883007] [2.0] [cxt 0] Deparser 'deparser': start
+[18:09:27.486] [bmv2] [D] [thread 883007] [2.0] [cxt 0] Updating checksum 'cksum'
+[18:09:27.486] [bmv2] [D] [thread 883007] [2.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:27.486] [bmv2] [D] [thread 883007] [2.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:27.486] [bmv2] [D] [thread 883007] [2.0] [cxt 0] Deparser 'deparser': end
+[18:09:27.486] [bmv2] [D] [thread 883011] [2.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Processing packet received on port 0
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Parser 'parser': start
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Parser state 'start': key is 0000
+[18:09:27.547] [bmv2] [T] [thread 883006] [3.0] [cxt 0] Bytes parsed: 0
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Extracting header 'ethernet'
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:27.547] [bmv2] [T] [thread 883006] [3.0] [cxt 0] Bytes parsed: 14
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Extracting header 'ipv6'
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:27.547] [bmv2] [T] [thread 883006] [3.0] [cxt 0] Bytes parsed: 54
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Parser 'parser': end
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Pipeline 'ingress': start
+[18:09:27.547] [bmv2] [T] [thread 883006] [3.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Looking up key:
+
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:27.547] [bmv2] [T] [thread 883006] [3.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:27.547] [bmv2] [T] [thread 883006] [3.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:27.547] [bmv2] [T] [thread 883006] [3.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:27.547] [bmv2] [T] [thread 883006] [3.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Action entry is NoAction - 
+[18:09:27.547] [bmv2] [T] [thread 883006] [3.0] [cxt 0] Action NoAction
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Pipeline 'ingress': end
+[18:09:27.547] [bmv2] [D] [thread 883006] [3.0] [cxt 0] Egress port is 0
+[18:09:27.547] [bmv2] [D] [thread 883007] [3.0] [cxt 0] Pipeline 'egress': start
+[18:09:27.547] [bmv2] [T] [thread 883007] [3.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:27.547] [bmv2] [T] [thread 883007] [3.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:27.547] [bmv2] [D] [thread 883007] [3.0] [cxt 0] Pipeline 'egress': end
+[18:09:27.547] [bmv2] [D] [thread 883007] [3.0] [cxt 0] Deparser 'deparser': start
+[18:09:27.547] [bmv2] [D] [thread 883007] [3.0] [cxt 0] Updating checksum 'cksum'
+[18:09:27.547] [bmv2] [D] [thread 883007] [3.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:27.547] [bmv2] [D] [thread 883007] [3.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:27.547] [bmv2] [D] [thread 883007] [3.0] [cxt 0] Deparser 'deparser': end
+[18:09:27.547] [bmv2] [D] [thread 883011] [3.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Processing packet received on port 0
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Parser 'parser': start
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Parser state 'start': key is 0000
+[18:09:27.643] [bmv2] [T] [thread 883006] [4.0] [cxt 0] Bytes parsed: 0
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Extracting header 'ethernet'
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:27.643] [bmv2] [T] [thread 883006] [4.0] [cxt 0] Bytes parsed: 14
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Extracting header 'ipv6'
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:27.643] [bmv2] [T] [thread 883006] [4.0] [cxt 0] Bytes parsed: 54
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Parser 'parser': end
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Pipeline 'ingress': start
+[18:09:27.643] [bmv2] [T] [thread 883006] [4.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Looking up key:
+
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:27.643] [bmv2] [T] [thread 883006] [4.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:27.643] [bmv2] [T] [thread 883006] [4.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:27.643] [bmv2] [T] [thread 883006] [4.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:27.643] [bmv2] [T] [thread 883006] [4.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Action entry is NoAction - 
+[18:09:27.643] [bmv2] [T] [thread 883006] [4.0] [cxt 0] Action NoAction
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Pipeline 'ingress': end
+[18:09:27.643] [bmv2] [D] [thread 883006] [4.0] [cxt 0] Egress port is 0
+[18:09:27.643] [bmv2] [D] [thread 883007] [4.0] [cxt 0] Pipeline 'egress': start
+[18:09:27.643] [bmv2] [T] [thread 883007] [4.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:27.643] [bmv2] [T] [thread 883007] [4.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:27.643] [bmv2] [D] [thread 883007] [4.0] [cxt 0] Pipeline 'egress': end
+[18:09:27.643] [bmv2] [D] [thread 883007] [4.0] [cxt 0] Deparser 'deparser': start
+[18:09:27.643] [bmv2] [D] [thread 883007] [4.0] [cxt 0] Updating checksum 'cksum'
+[18:09:27.643] [bmv2] [D] [thread 883007] [4.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:27.643] [bmv2] [D] [thread 883007] [4.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:27.643] [bmv2] [D] [thread 883007] [4.0] [cxt 0] Deparser 'deparser': end
+[18:09:27.643] [bmv2] [D] [thread 883011] [4.0] [cxt 0] Transmitting packet of size 170 out of port 0
+[18:09:27.676] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Processing packet received on port 1
+[18:09:27.676] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Parser 'parser': start
+[18:09:27.676] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:27.676] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Parser state 'start': key is 0001
+[18:09:27.676] [bmv2] [T] [thread 883006] [5.0] [cxt 0] Bytes parsed: 0
+[18:09:27.676] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:27.676] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Extracting header 'ethernet'
+[18:09:27.676] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:27.676] [bmv2] [T] [thread 883006] [5.0] [cxt 0] Bytes parsed: 14
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Extracting header 'ipv6'
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:27.677] [bmv2] [T] [thread 883006] [5.0] [cxt 0] Bytes parsed: 54
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Parser 'parser': end
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Pipeline 'ingress': start
+[18:09:27.677] [bmv2] [T] [thread 883006] [5.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Looking up key:
+
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:27.677] [bmv2] [T] [thread 883006] [5.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:27.677] [bmv2] [T] [thread 883006] [5.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:27.677] [bmv2] [T] [thread 883006] [5.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:27.677] [bmv2] [T] [thread 883006] [5.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Action entry is NoAction - 
+[18:09:27.677] [bmv2] [T] [thread 883006] [5.0] [cxt 0] Action NoAction
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Pipeline 'ingress': end
+[18:09:27.677] [bmv2] [D] [thread 883006] [5.0] [cxt 0] Egress port is 0
+[18:09:27.677] [bmv2] [D] [thread 883007] [5.0] [cxt 0] Pipeline 'egress': start
+[18:09:27.677] [bmv2] [T] [thread 883007] [5.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:27.677] [bmv2] [T] [thread 883007] [5.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:27.677] [bmv2] [D] [thread 883007] [5.0] [cxt 0] Pipeline 'egress': end
+[18:09:27.677] [bmv2] [D] [thread 883007] [5.0] [cxt 0] Deparser 'deparser': start
+[18:09:27.677] [bmv2] [D] [thread 883007] [5.0] [cxt 0] Updating checksum 'cksum'
+[18:09:27.677] [bmv2] [D] [thread 883007] [5.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:27.677] [bmv2] [D] [thread 883007] [5.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:27.677] [bmv2] [D] [thread 883007] [5.0] [cxt 0] Deparser 'deparser': end
+[18:09:27.677] [bmv2] [D] [thread 883011] [5.0] [cxt 0] Transmitting packet of size 150 out of port 0
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Processing packet received on port 1
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Parser 'parser': start
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Parser state 'start': key is 0001
+[18:09:27.740] [bmv2] [T] [thread 883006] [6.0] [cxt 0] Bytes parsed: 0
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Extracting header 'ethernet'
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:27.740] [bmv2] [T] [thread 883006] [6.0] [cxt 0] Bytes parsed: 14
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Extracting header 'ipv6'
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:27.740] [bmv2] [T] [thread 883006] [6.0] [cxt 0] Bytes parsed: 54
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Parser 'parser': end
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Pipeline 'ingress': start
+[18:09:27.740] [bmv2] [T] [thread 883006] [6.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Looking up key:
+
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:27.740] [bmv2] [T] [thread 883006] [6.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:27.740] [bmv2] [T] [thread 883006] [6.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:27.740] [bmv2] [T] [thread 883006] [6.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:27.740] [bmv2] [T] [thread 883006] [6.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Action entry is NoAction - 
+[18:09:27.740] [bmv2] [T] [thread 883006] [6.0] [cxt 0] Action NoAction
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Pipeline 'ingress': end
+[18:09:27.740] [bmv2] [D] [thread 883006] [6.0] [cxt 0] Egress port is 0
+[18:09:27.740] [bmv2] [D] [thread 883007] [6.0] [cxt 0] Pipeline 'egress': start
+[18:09:27.740] [bmv2] [T] [thread 883007] [6.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:27.740] [bmv2] [T] [thread 883007] [6.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:27.740] [bmv2] [D] [thread 883007] [6.0] [cxt 0] Pipeline 'egress': end
+[18:09:27.740] [bmv2] [D] [thread 883007] [6.0] [cxt 0] Deparser 'deparser': start
+[18:09:27.740] [bmv2] [D] [thread 883007] [6.0] [cxt 0] Updating checksum 'cksum'
+[18:09:27.740] [bmv2] [D] [thread 883007] [6.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:27.740] [bmv2] [D] [thread 883007] [6.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:27.740] [bmv2] [D] [thread 883007] [6.0] [cxt 0] Deparser 'deparser': end
+[18:09:27.740] [bmv2] [D] [thread 883011] [6.0] [cxt 0] Transmitting packet of size 150 out of port 0
+[18:09:27.750] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Processing packet received on port 1
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Parser 'parser': start
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Parser state 'start': key is 0001
+[18:09:27.751] [bmv2] [T] [thread 883006] [7.0] [cxt 0] Bytes parsed: 0
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Extracting header 'ethernet'
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:27.751] [bmv2] [T] [thread 883006] [7.0] [cxt 0] Bytes parsed: 14
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Extracting header 'ipv6'
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:27.751] [bmv2] [T] [thread 883006] [7.0] [cxt 0] Bytes parsed: 54
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Parser 'parser': end
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Pipeline 'ingress': start
+[18:09:27.751] [bmv2] [T] [thread 883006] [7.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Looking up key:
+
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:27.751] [bmv2] [T] [thread 883006] [7.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:27.751] [bmv2] [T] [thread 883006] [7.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:27.751] [bmv2] [T] [thread 883006] [7.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:27.751] [bmv2] [T] [thread 883006] [7.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Action entry is NoAction - 
+[18:09:27.751] [bmv2] [T] [thread 883006] [7.0] [cxt 0] Action NoAction
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Pipeline 'ingress': end
+[18:09:27.751] [bmv2] [D] [thread 883006] [7.0] [cxt 0] Egress port is 0
+[18:09:27.751] [bmv2] [D] [thread 883007] [7.0] [cxt 0] Pipeline 'egress': start
+[18:09:27.751] [bmv2] [T] [thread 883007] [7.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:27.751] [bmv2] [T] [thread 883007] [7.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:27.751] [bmv2] [D] [thread 883007] [7.0] [cxt 0] Pipeline 'egress': end
+[18:09:27.751] [bmv2] [D] [thread 883007] [7.0] [cxt 0] Deparser 'deparser': start
+[18:09:27.751] [bmv2] [D] [thread 883007] [7.0] [cxt 0] Updating checksum 'cksum'
+[18:09:27.751] [bmv2] [D] [thread 883007] [7.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:27.751] [bmv2] [D] [thread 883007] [7.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:27.751] [bmv2] [D] [thread 883007] [7.0] [cxt 0] Deparser 'deparser': end
+[18:09:27.751] [bmv2] [D] [thread 883011] [7.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Processing packet received on port 0
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Parser 'parser': start
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Parser state 'start': key is 0000
+[18:09:27.807] [bmv2] [T] [thread 883006] [8.0] [cxt 0] Bytes parsed: 0
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Extracting header 'ethernet'
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:27.807] [bmv2] [T] [thread 883006] [8.0] [cxt 0] Bytes parsed: 14
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Extracting header 'ipv6'
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:27.807] [bmv2] [T] [thread 883006] [8.0] [cxt 0] Bytes parsed: 54
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Parser 'parser': end
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Pipeline 'ingress': start
+[18:09:27.807] [bmv2] [T] [thread 883006] [8.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Looking up key:
+
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:27.807] [bmv2] [T] [thread 883006] [8.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:27.807] [bmv2] [T] [thread 883006] [8.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:27.807] [bmv2] [T] [thread 883006] [8.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:27.807] [bmv2] [T] [thread 883006] [8.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Action entry is NoAction - 
+[18:09:27.807] [bmv2] [T] [thread 883006] [8.0] [cxt 0] Action NoAction
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Pipeline 'ingress': end
+[18:09:27.807] [bmv2] [D] [thread 883006] [8.0] [cxt 0] Egress port is 0
+[18:09:27.807] [bmv2] [D] [thread 883007] [8.0] [cxt 0] Pipeline 'egress': start
+[18:09:27.807] [bmv2] [T] [thread 883007] [8.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:27.807] [bmv2] [T] [thread 883007] [8.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:27.807] [bmv2] [D] [thread 883007] [8.0] [cxt 0] Pipeline 'egress': end
+[18:09:27.807] [bmv2] [D] [thread 883007] [8.0] [cxt 0] Deparser 'deparser': start
+[18:09:27.807] [bmv2] [D] [thread 883007] [8.0] [cxt 0] Updating checksum 'cksum'
+[18:09:27.807] [bmv2] [D] [thread 883007] [8.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:27.807] [bmv2] [D] [thread 883007] [8.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:27.807] [bmv2] [D] [thread 883007] [8.0] [cxt 0] Deparser 'deparser': end
+[18:09:27.807] [bmv2] [D] [thread 883011] [8.0] [cxt 0] Transmitting packet of size 170 out of port 0
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Processing packet received on port 1
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Parser 'parser': start
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Parser state 'start': key is 0001
+[18:09:28.091] [bmv2] [T] [thread 883006] [9.0] [cxt 0] Bytes parsed: 0
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Extracting header 'ethernet'
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:28.091] [bmv2] [T] [thread 883006] [9.0] [cxt 0] Bytes parsed: 14
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Extracting header 'ipv6'
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:28.091] [bmv2] [T] [thread 883006] [9.0] [cxt 0] Bytes parsed: 54
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Parser 'parser': end
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Pipeline 'ingress': start
+[18:09:28.091] [bmv2] [T] [thread 883006] [9.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Looking up key:
+
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:28.091] [bmv2] [T] [thread 883006] [9.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:28.091] [bmv2] [T] [thread 883006] [9.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:28.091] [bmv2] [T] [thread 883006] [9.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:28.091] [bmv2] [T] [thread 883006] [9.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Action entry is NoAction - 
+[18:09:28.091] [bmv2] [T] [thread 883006] [9.0] [cxt 0] Action NoAction
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Pipeline 'ingress': end
+[18:09:28.091] [bmv2] [D] [thread 883006] [9.0] [cxt 0] Egress port is 0
+[18:09:28.091] [bmv2] [D] [thread 883007] [9.0] [cxt 0] Pipeline 'egress': start
+[18:09:28.091] [bmv2] [T] [thread 883007] [9.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:28.091] [bmv2] [T] [thread 883007] [9.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:28.091] [bmv2] [D] [thread 883007] [9.0] [cxt 0] Pipeline 'egress': end
+[18:09:28.091] [bmv2] [D] [thread 883007] [9.0] [cxt 0] Deparser 'deparser': start
+[18:09:28.091] [bmv2] [D] [thread 883007] [9.0] [cxt 0] Updating checksum 'cksum'
+[18:09:28.091] [bmv2] [D] [thread 883007] [9.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:28.091] [bmv2] [D] [thread 883007] [9.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:28.091] [bmv2] [D] [thread 883007] [9.0] [cxt 0] Deparser 'deparser': end
+[18:09:28.091] [bmv2] [D] [thread 883011] [9.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Processing packet received on port 0
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Parser 'parser': start
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Parser state 'start': key is 0000
+[18:09:28.123] [bmv2] [T] [thread 883006] [10.0] [cxt 0] Bytes parsed: 0
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Extracting header 'ethernet'
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:28.123] [bmv2] [T] [thread 883006] [10.0] [cxt 0] Bytes parsed: 14
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Extracting header 'ipv6'
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:28.123] [bmv2] [T] [thread 883006] [10.0] [cxt 0] Bytes parsed: 54
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Parser 'parser': end
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Pipeline 'ingress': start
+[18:09:28.123] [bmv2] [T] [thread 883006] [10.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Looking up key:
+
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:28.123] [bmv2] [T] [thread 883006] [10.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:28.123] [bmv2] [T] [thread 883006] [10.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:28.123] [bmv2] [T] [thread 883006] [10.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:28.123] [bmv2] [T] [thread 883006] [10.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Action entry is NoAction - 
+[18:09:28.123] [bmv2] [T] [thread 883006] [10.0] [cxt 0] Action NoAction
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Pipeline 'ingress': end
+[18:09:28.123] [bmv2] [D] [thread 883006] [10.0] [cxt 0] Egress port is 0
+[18:09:28.123] [bmv2] [D] [thread 883007] [10.0] [cxt 0] Pipeline 'egress': start
+[18:09:28.123] [bmv2] [T] [thread 883007] [10.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:28.123] [bmv2] [T] [thread 883007] [10.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:28.123] [bmv2] [D] [thread 883007] [10.0] [cxt 0] Pipeline 'egress': end
+[18:09:28.123] [bmv2] [D] [thread 883007] [10.0] [cxt 0] Deparser 'deparser': start
+[18:09:28.123] [bmv2] [D] [thread 883007] [10.0] [cxt 0] Updating checksum 'cksum'
+[18:09:28.123] [bmv2] [D] [thread 883007] [10.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:28.123] [bmv2] [D] [thread 883007] [10.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:28.123] [bmv2] [D] [thread 883007] [10.0] [cxt 0] Deparser 'deparser': end
+[18:09:28.123] [bmv2] [D] [thread 883011] [10.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Processing packet received on port 1
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Parser 'parser': start
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Parser state 'start': key is 0001
+[18:09:28.251] [bmv2] [T] [thread 883006] [11.0] [cxt 0] Bytes parsed: 0
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Extracting header 'ethernet'
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:28.251] [bmv2] [T] [thread 883006] [11.0] [cxt 0] Bytes parsed: 14
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Extracting header 'ipv6'
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:28.251] [bmv2] [T] [thread 883006] [11.0] [cxt 0] Bytes parsed: 54
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Parser 'parser': end
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Pipeline 'ingress': start
+[18:09:28.251] [bmv2] [T] [thread 883006] [11.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Looking up key:
+
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:28.251] [bmv2] [T] [thread 883006] [11.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:28.251] [bmv2] [T] [thread 883006] [11.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:28.251] [bmv2] [T] [thread 883006] [11.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:28.251] [bmv2] [T] [thread 883006] [11.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Action entry is NoAction - 
+[18:09:28.251] [bmv2] [T] [thread 883006] [11.0] [cxt 0] Action NoAction
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Pipeline 'ingress': end
+[18:09:28.251] [bmv2] [D] [thread 883006] [11.0] [cxt 0] Egress port is 0
+[18:09:28.251] [bmv2] [D] [thread 883007] [11.0] [cxt 0] Pipeline 'egress': start
+[18:09:28.251] [bmv2] [T] [thread 883007] [11.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:28.251] [bmv2] [T] [thread 883007] [11.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:28.251] [bmv2] [D] [thread 883007] [11.0] [cxt 0] Pipeline 'egress': end
+[18:09:28.251] [bmv2] [D] [thread 883007] [11.0] [cxt 0] Deparser 'deparser': start
+[18:09:28.251] [bmv2] [D] [thread 883007] [11.0] [cxt 0] Updating checksum 'cksum'
+[18:09:28.251] [bmv2] [D] [thread 883007] [11.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:28.251] [bmv2] [D] [thread 883007] [11.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:28.251] [bmv2] [D] [thread 883007] [11.0] [cxt 0] Deparser 'deparser': end
+[18:09:28.251] [bmv2] [D] [thread 883011] [11.0] [cxt 0] Transmitting packet of size 150 out of port 0
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Processing packet received on port 1
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Parser 'parser': start
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Parser state 'start': key is 0001
+[18:09:28.667] [bmv2] [T] [thread 883006] [12.0] [cxt 0] Bytes parsed: 0
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Extracting header 'ethernet'
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:28.667] [bmv2] [T] [thread 883006] [12.0] [cxt 0] Bytes parsed: 14
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Extracting header 'ipv6'
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (0)
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[18:09:28.667] [bmv2] [T] [thread 883006] [12.0] [cxt 0] Bytes parsed: 54
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Parser 'parser': end
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Pipeline 'ingress': start
+[18:09:28.667] [bmv2] [T] [thread 883006] [12.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Looking up key:
+
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:28.667] [bmv2] [T] [thread 883006] [12.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:28.667] [bmv2] [T] [thread 883006] [12.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:28.667] [bmv2] [T] [thread 883006] [12.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:28.667] [bmv2] [T] [thread 883006] [12.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 333300000016
+
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': miss
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Action entry is NoAction - 
+[18:09:28.667] [bmv2] [T] [thread 883006] [12.0] [cxt 0] Action NoAction
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Pipeline 'ingress': end
+[18:09:28.667] [bmv2] [D] [thread 883006] [12.0] [cxt 0] Egress port is 0
+[18:09:28.667] [bmv2] [D] [thread 883007] [12.0] [cxt 0] Pipeline 'egress': start
+[18:09:28.667] [bmv2] [T] [thread 883007] [12.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:28.667] [bmv2] [T] [thread 883007] [12.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is false
+[18:09:28.667] [bmv2] [D] [thread 883007] [12.0] [cxt 0] Pipeline 'egress': end
+[18:09:28.667] [bmv2] [D] [thread 883007] [12.0] [cxt 0] Deparser 'deparser': start
+[18:09:28.667] [bmv2] [D] [thread 883007] [12.0] [cxt 0] Updating checksum 'cksum'
+[18:09:28.667] [bmv2] [D] [thread 883007] [12.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:28.667] [bmv2] [D] [thread 883007] [12.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:28.667] [bmv2] [D] [thread 883007] [12.0] [cxt 0] Deparser 'deparser': end
+[18:09:28.667] [bmv2] [D] [thread 883011] [12.0] [cxt 0] Transmitting packet of size 150 out of port 0
+[18:09:35.435] [bmv2] [T] [thread 883043] bm_get_config
+[18:09:35.439] [bmv2] [T] [thread 883043] bm_set_default_action
+[18:09:35.439] [bmv2] [D] [thread 883043] Set default entry for table 'snt_egress.srv6_int_egress.swtrace': snt_egress.srv6_int_egress.add_swtrace - 1,
+[18:09:35.440] [bmv2] [T] [thread 883043] bm_table_add_entry
+[18:09:35.440] [bmv2] [D] [thread 883043] Entry 0 added to table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:35.440] [bmv2] [D] [thread 883043] Dumping entry 0
+Match key:
+* hdr.ethernet.dst_addr: EXACT     080000001100
+Action entry: NoAction - 
+
+[18:09:35.441] [bmv2] [T] [thread 883043] bm_table_add_entry
+[18:09:35.441] [bmv2] [D] [thread 883043] Entry 0 added to table 'snt_ingress.srv6_int_ingress.routing_v6_table'
+[18:09:35.442] [bmv2] [D] [thread 883043] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000c000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+
+[18:09:35.442] [bmv2] [T] [thread 883043] bm_table_add_entry
+[18:09:35.442] [bmv2] [D] [thread 883043] Entry 0 added to table 'snt_ingress.srv6_int_ingress.transit_table'
+[18:09:35.442] [bmv2] [D] [thread 883043] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000d000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Processing packet received on port 0
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser': start
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'start'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'start': key is 0000
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 0
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Extracting header 'ethernet'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 14
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Extracting header 'ipv6'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (43)
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'parse_ipv6': key is 2b
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 54
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'parse_srv6'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Extracting header 'srh'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'parse_srv6' has no switch, going to default next state
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 62
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Extracting to header stack 0, next header is 11
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser set: setting field 'scalars.tmp' from expression, new value is 1
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'parse_segment_list': key is 01
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 78
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'mark_next_sid'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._next_sid2' from expression, new value is 334965455888536750142931430313174237186
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'mark_next_sid' has no switch, going to default next state
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 78
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 0
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'check_last_sid': key is 00
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 78
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Extracting to header stack 0, next header is 12
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser set: setting field 'scalars.tmp' from expression, new value is 0
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'parse_segment_list': key is 00
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 94
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 1
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'check_last_sid': key is 01
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 94
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'parse_srv6_next_hdr'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'parse_srv6_next_hdr': key is fd
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 94
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser' entering state 'parse_count'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Extracting header 'nodeCount'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._parser_metadata_remaining5' from field 'nodeCount.count' (0)
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser state 'parse_count': key is 0000
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Bytes parsed: 96
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Parser 'parser': end
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Pipeline 'ingress': start
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Looking up key:
+
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000001100
+
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': hit with handle 0
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ethernet.dst_addr: EXACT     080000001100
+Action entry: NoAction - 
+
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Action entry is NoAction - 
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Action NoAction
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(185) Condition "hdr.ipv6.isValid()" (node_6) is true
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_sid_table'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000d000000000000000000000001
+
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_sid_table': miss
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Action entry is NoAction - 
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Action NoAction
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.transit_table'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000d000000000000000000000001
+
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.transit_table': hit with handle 0
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000d000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Action snt_ingress.srv6_int_ingress.insert_segment_list_2
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(97) Primitive hdr.ipv6.dst_addr = s1
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(98) Primitive hdr.ipv6.payload_len = hdr.ipv6.payload_len + 40
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(76) Primitive hdr.srh.setValid()
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(78) Primitive hdr.srh.next_hdr = 253
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(79) Primitive hdr.srh.hdr_ext_len = num_segments * 2
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(80) Primitive hdr.srh.routing_type = 4
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(81) Primitive hdr.srh.segment_left = num_segments - 1
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(82) Primitive hdr.srh.last_entry = num_segments - 1
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(83) Primitive hdr.srh.flags = 0
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(84) Primitive hdr.srh.tag = 0
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(85) Primitive hdr.ipv6.next_hdr = 8w43
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(100) Primitive hdr.segment_list[0].setValid()
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(101) Primitive hdr.segment_list[0].sid = s2
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(102) Primitive hdr.segment_list[1].setValid()
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(103) Primitive hdr.segment_list[1].sid = s1
+[18:09:40.148] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.routing_v6_table'
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000c000000000000000000000001
+
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.routing_v6_table': hit with handle 0
+[18:09:40.148] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000c000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+
+[18:09:40.149] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+[18:09:40.149] [bmv2] [T] [thread 883006] [13.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_hop
+[18:09:40.149] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(44) Primitive hdr.ethernet.src_addr = hdr.ethernet.dst_addr
+[18:09:40.149] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(45) Primitive hdr.ethernet.dst_addr = dmac
+[18:09:40.149] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(46) Primitive hdr.ipv6.hop_limit = hdr.ipv6.hop_limit - 1
+[18:09:40.149] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(47) Primitive standard_metadata.egress_spec = port
+[18:09:40.149] [bmv2] [T] [thread 883006] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(198) Condition "hdr.ipv6.hop_limit == 0" (node_12) is false
+[18:09:40.149] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Pipeline 'ingress': end
+[18:09:40.149] [bmv2] [D] [thread 883006] [13.0] [cxt 0] Egress port is 1
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Pipeline 'egress': start
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is true
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] Applying table 'snt_egress.srv6_int_egress.swtrace'
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Looking up key:
+
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Table 'snt_egress.srv6_int_egress.swtrace': miss
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Action entry is snt_egress.srv6_int_egress.add_swtrace - 1,
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] Action snt_egress.srv6_int_egress.add_swtrace
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(213) Primitive hdr.nodeCount.count = hdr.nodeCount.count + 1
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(214) Primitive hdr.INT.push_front(1)
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(215) Primitive hdr.INT[0].setValid()
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(216) Primitive hdr.INT[0].swid = swid
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(217) Primitive hdr.INT[0].ingress_port = (ingress_port_t)standard_metadata.ingress_port
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(218) Primitive hdr.INT[0].ingress_global_timestamp = (ingress_global_timestamp_t)standard_metadata.ingress_global_timestamp
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(219) Primitive hdr.INT[0].egress_port = (egress_port_t)standard_metadata.egress_port
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(220) Primitive hdr.INT[0].egress_spec = (egressSpec_t)standard_metadata.egress_spec
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(221) Primitive hdr.INT[0].egress_global_timestamp = (egress_global_timestamp_t)standard_metadata.egress_global_timestamp
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(222) Primitive hdr.INT[0].enq_timestamp = (enq_timestamp_t)standard_metadata.enq_timestamp
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(223) Primitive hdr.INT[0].enq_qdepth = (enq_qdepth_t)standard_metadata.enq_qdepth
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(224) Primitive hdr.INT[0].deq_timedelta = (deq_timedelta_t)standard_metadata.deq_timedelta
+[18:09:40.149] [bmv2] [T] [thread 883008] [13.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(225) Primitive hdr.INT[0].deq_qdepth = (deq_qdepth_t)standard_metadata.deq_qdepth
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Pipeline 'egress': end
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Deparser 'deparser': start
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Updating checksum 'cksum'
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Deparsing header 'ethernet'
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Deparsing header 'ipv6'
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Deparsing header 'srh'
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Deparsing header 'segment_list[0]'
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Deparsing header 'segment_list[1]'
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Deparsing header 'nodeCount'
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Deparsing header 'INT[0]'
+[18:09:40.149] [bmv2] [D] [thread 883008] [13.0] [cxt 0] Deparser 'deparser': end
+[18:09:40.149] [bmv2] [D] [thread 883011] [13.0] [cxt 0] Transmitting packet of size 131 out of port 1
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Processing packet received on port 0
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser': start
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'start'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'start': key is 0000
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 0
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Extracting header 'ethernet'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 14
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Extracting header 'ipv6'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (43)
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'parse_ipv6': key is 2b
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 54
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'parse_srv6'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Extracting header 'srh'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'parse_srv6' has no switch, going to default next state
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 62
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Extracting to header stack 0, next header is 11
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser set: setting field 'scalars.tmp' from expression, new value is 1
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'parse_segment_list': key is 01
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 78
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'mark_next_sid'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._next_sid2' from expression, new value is 334965455888536750142931430313174237186
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'mark_next_sid' has no switch, going to default next state
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 78
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 0
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'check_last_sid': key is 00
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 78
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Extracting to header stack 0, next header is 12
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser set: setting field 'scalars.tmp' from expression, new value is 0
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'parse_segment_list': key is 00
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 94
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 1
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'check_last_sid': key is 01
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 94
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'parse_srv6_next_hdr'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'parse_srv6_next_hdr': key is fd
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 94
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser' entering state 'parse_count'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Extracting header 'nodeCount'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._parser_metadata_remaining5' from field 'nodeCount.count' (0)
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser state 'parse_count': key is 0000
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Bytes parsed: 96
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Parser 'parser': end
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Pipeline 'ingress': start
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Looking up key:
+
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000001100
+
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': hit with handle 0
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ethernet.dst_addr: EXACT     080000001100
+Action entry: NoAction - 
+
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Action entry is NoAction - 
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Action NoAction
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(185) Condition "hdr.ipv6.isValid()" (node_6) is true
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_sid_table'
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000d000000000000000000000001
+
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_sid_table': miss
+[20:02:28.000] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Action entry is NoAction - 
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Action NoAction
+[20:02:28.000] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.transit_table'
+[20:02:28.001] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000d000000000000000000000001
+
+[20:02:28.001] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.transit_table': hit with handle 0
+[20:02:28.001] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000d000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+
+[20:02:28.001] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Action snt_ingress.srv6_int_ingress.insert_segment_list_2
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(97) Primitive hdr.ipv6.dst_addr = s1
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(98) Primitive hdr.ipv6.payload_len = hdr.ipv6.payload_len + 40
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(76) Primitive hdr.srh.setValid()
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(78) Primitive hdr.srh.next_hdr = 253
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(79) Primitive hdr.srh.hdr_ext_len = num_segments * 2
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(80) Primitive hdr.srh.routing_type = 4
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(81) Primitive hdr.srh.segment_left = num_segments - 1
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(82) Primitive hdr.srh.last_entry = num_segments - 1
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(83) Primitive hdr.srh.flags = 0
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(84) Primitive hdr.srh.tag = 0
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(85) Primitive hdr.ipv6.next_hdr = 8w43
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(100) Primitive hdr.segment_list[0].setValid()
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(101) Primitive hdr.segment_list[0].sid = s2
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(102) Primitive hdr.segment_list[1].setValid()
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(103) Primitive hdr.segment_list[1].sid = s1
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.routing_v6_table'
+[20:02:28.001] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000c000000000000000000000001
+
+[20:02:28.001] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.routing_v6_table': hit with handle 0
+[20:02:28.001] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000c000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+
+[20:02:28.001] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_hop
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(44) Primitive hdr.ethernet.src_addr = hdr.ethernet.dst_addr
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(45) Primitive hdr.ethernet.dst_addr = dmac
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(46) Primitive hdr.ipv6.hop_limit = hdr.ipv6.hop_limit - 1
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(47) Primitive standard_metadata.egress_spec = port
+[20:02:28.001] [bmv2] [T] [thread 883006] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(198) Condition "hdr.ipv6.hop_limit == 0" (node_12) is false
+[20:02:28.001] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Pipeline 'ingress': end
+[20:02:28.001] [bmv2] [D] [thread 883006] [14.0] [cxt 0] Egress port is 1
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Pipeline 'egress': start
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is true
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] Applying table 'snt_egress.srv6_int_egress.swtrace'
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Looking up key:
+
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Table 'snt_egress.srv6_int_egress.swtrace': miss
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Action entry is snt_egress.srv6_int_egress.add_swtrace - 1,
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] Action snt_egress.srv6_int_egress.add_swtrace
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(213) Primitive hdr.nodeCount.count = hdr.nodeCount.count + 1
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(214) Primitive hdr.INT.push_front(1)
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(215) Primitive hdr.INT[0].setValid()
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(216) Primitive hdr.INT[0].swid = swid
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(217) Primitive hdr.INT[0].ingress_port = (ingress_port_t)standard_metadata.ingress_port
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(218) Primitive hdr.INT[0].ingress_global_timestamp = (ingress_global_timestamp_t)standard_metadata.ingress_global_timestamp
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(219) Primitive hdr.INT[0].egress_port = (egress_port_t)standard_metadata.egress_port
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(220) Primitive hdr.INT[0].egress_spec = (egressSpec_t)standard_metadata.egress_spec
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(221) Primitive hdr.INT[0].egress_global_timestamp = (egress_global_timestamp_t)standard_metadata.egress_global_timestamp
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(222) Primitive hdr.INT[0].enq_timestamp = (enq_timestamp_t)standard_metadata.enq_timestamp
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(223) Primitive hdr.INT[0].enq_qdepth = (enq_qdepth_t)standard_metadata.enq_qdepth
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(224) Primitive hdr.INT[0].deq_timedelta = (deq_timedelta_t)standard_metadata.deq_timedelta
+[20:02:28.001] [bmv2] [T] [thread 883008] [14.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(225) Primitive hdr.INT[0].deq_qdepth = (deq_qdepth_t)standard_metadata.deq_qdepth
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Pipeline 'egress': end
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Deparser 'deparser': start
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Updating checksum 'cksum'
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Deparsing header 'ethernet'
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Deparsing header 'ipv6'
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Deparsing header 'srh'
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Deparsing header 'segment_list[0]'
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Deparsing header 'segment_list[1]'
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Deparsing header 'nodeCount'
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Deparsing header 'INT[0]'
+[20:02:28.001] [bmv2] [D] [thread 883008] [14.0] [cxt 0] Deparser 'deparser': end
+[20:02:28.001] [bmv2] [D] [thread 883011] [14.0] [cxt 0] Transmitting packet of size 130 out of port 1
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Processing packet received on port 0
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser': start
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'start'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'start': key is 0000
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 0
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Extracting header 'ethernet'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 14
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Extracting header 'ipv6'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (43)
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'parse_ipv6': key is 2b
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 54
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'parse_srv6'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Extracting header 'srh'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'parse_srv6' has no switch, going to default next state
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 62
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Extracting to header stack 0, next header is 11
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser set: setting field 'scalars.tmp' from expression, new value is 1
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'parse_segment_list': key is 01
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 78
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'mark_next_sid'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._next_sid2' from expression, new value is 334965455888536750142931430313174237186
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'mark_next_sid' has no switch, going to default next state
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 78
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 0
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'check_last_sid': key is 00
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 78
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Extracting to header stack 0, next header is 12
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser set: setting field 'scalars.tmp' from expression, new value is 0
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'parse_segment_list': key is 00
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 94
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 1
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'check_last_sid': key is 01
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 94
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'parse_srv6_next_hdr'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'parse_srv6_next_hdr': key is fd
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 94
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser' entering state 'parse_count'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Extracting header 'nodeCount'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._parser_metadata_remaining5' from field 'nodeCount.count' (0)
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser state 'parse_count': key is 0000
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Bytes parsed: 96
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Parser 'parser': end
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Pipeline 'ingress': start
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Looking up key:
+
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000001100
+
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': hit with handle 0
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ethernet.dst_addr: EXACT     080000001100
+Action entry: NoAction - 
+
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Action entry is NoAction - 
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Action NoAction
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(185) Condition "hdr.ipv6.isValid()" (node_6) is true
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_sid_table'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000d000000000000000000000001
+
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_sid_table': miss
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Action entry is NoAction - 
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Action NoAction
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.transit_table'
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000d000000000000000000000001
+
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.transit_table': hit with handle 0
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000d000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+
+[20:03:06.504] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Action snt_ingress.srv6_int_ingress.insert_segment_list_2
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(97) Primitive hdr.ipv6.dst_addr = s1
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(98) Primitive hdr.ipv6.payload_len = hdr.ipv6.payload_len + 40
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(76) Primitive hdr.srh.setValid()
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(78) Primitive hdr.srh.next_hdr = 253
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(79) Primitive hdr.srh.hdr_ext_len = num_segments * 2
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(80) Primitive hdr.srh.routing_type = 4
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(81) Primitive hdr.srh.segment_left = num_segments - 1
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(82) Primitive hdr.srh.last_entry = num_segments - 1
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(83) Primitive hdr.srh.flags = 0
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(84) Primitive hdr.srh.tag = 0
+[20:03:06.504] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(85) Primitive hdr.ipv6.next_hdr = 8w43
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(100) Primitive hdr.segment_list[0].setValid()
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(101) Primitive hdr.segment_list[0].sid = s2
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(102) Primitive hdr.segment_list[1].setValid()
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(103) Primitive hdr.segment_list[1].sid = s1
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.routing_v6_table'
+[20:03:06.505] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000c000000000000000000000001
+
+[20:03:06.505] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.routing_v6_table': hit with handle 0
+[20:03:06.505] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000c000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+
+[20:03:06.505] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_hop
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(44) Primitive hdr.ethernet.src_addr = hdr.ethernet.dst_addr
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(45) Primitive hdr.ethernet.dst_addr = dmac
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(46) Primitive hdr.ipv6.hop_limit = hdr.ipv6.hop_limit - 1
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(47) Primitive standard_metadata.egress_spec = port
+[20:03:06.505] [bmv2] [T] [thread 883006] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(198) Condition "hdr.ipv6.hop_limit == 0" (node_12) is false
+[20:03:06.505] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Pipeline 'ingress': end
+[20:03:06.505] [bmv2] [D] [thread 883006] [15.0] [cxt 0] Egress port is 1
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Pipeline 'egress': start
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is true
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] Applying table 'snt_egress.srv6_int_egress.swtrace'
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Looking up key:
+
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Table 'snt_egress.srv6_int_egress.swtrace': miss
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Action entry is snt_egress.srv6_int_egress.add_swtrace - 1,
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] Action snt_egress.srv6_int_egress.add_swtrace
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(213) Primitive hdr.nodeCount.count = hdr.nodeCount.count + 1
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(214) Primitive hdr.INT.push_front(1)
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(215) Primitive hdr.INT[0].setValid()
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(216) Primitive hdr.INT[0].swid = swid
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(217) Primitive hdr.INT[0].ingress_port = (ingress_port_t)standard_metadata.ingress_port
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(218) Primitive hdr.INT[0].ingress_global_timestamp = (ingress_global_timestamp_t)standard_metadata.ingress_global_timestamp
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(219) Primitive hdr.INT[0].egress_port = (egress_port_t)standard_metadata.egress_port
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(220) Primitive hdr.INT[0].egress_spec = (egressSpec_t)standard_metadata.egress_spec
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(221) Primitive hdr.INT[0].egress_global_timestamp = (egress_global_timestamp_t)standard_metadata.egress_global_timestamp
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(222) Primitive hdr.INT[0].enq_timestamp = (enq_timestamp_t)standard_metadata.enq_timestamp
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(223) Primitive hdr.INT[0].enq_qdepth = (enq_qdepth_t)standard_metadata.enq_qdepth
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(224) Primitive hdr.INT[0].deq_timedelta = (deq_timedelta_t)standard_metadata.deq_timedelta
+[20:03:06.505] [bmv2] [T] [thread 883008] [15.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(225) Primitive hdr.INT[0].deq_qdepth = (deq_qdepth_t)standard_metadata.deq_qdepth
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Pipeline 'egress': end
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Deparser 'deparser': start
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Updating checksum 'cksum'
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Deparsing header 'ethernet'
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Deparsing header 'ipv6'
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Deparsing header 'srh'
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Deparsing header 'segment_list[0]'
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Deparsing header 'segment_list[1]'
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Deparsing header 'nodeCount'
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Deparsing header 'INT[0]'
+[20:03:06.505] [bmv2] [D] [thread 883008] [15.0] [cxt 0] Deparser 'deparser': end
+[20:03:06.505] [bmv2] [D] [thread 883011] [15.0] [cxt 0] Transmitting packet of size 131 out of port 1
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Processing packet received on port 0
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser': start
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'start'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'start': key is 0000
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 0
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Extracting header 'ethernet'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 14
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Extracting header 'ipv6'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (43)
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'parse_ipv6': key is 2b
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 54
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'parse_srv6'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Extracting header 'srh'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'parse_srv6' has no switch, going to default next state
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 62
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Extracting to header stack 0, next header is 11
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser set: setting field 'scalars.tmp' from expression, new value is 1
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'parse_segment_list': key is 01
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 78
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'mark_next_sid'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._next_sid2' from expression, new value is 334965455888536750142931430313174237186
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'mark_next_sid' has no switch, going to default next state
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 78
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 0
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'check_last_sid': key is 00
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 78
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Extracting to header stack 0, next header is 12
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser set: setting field 'scalars.tmp' from expression, new value is 0
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'parse_segment_list': key is 00
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 94
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 1
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'check_last_sid': key is 01
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 94
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'parse_srv6_next_hdr'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'parse_srv6_next_hdr': key is fd
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 94
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser' entering state 'parse_count'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Extracting header 'nodeCount'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._parser_metadata_remaining5' from field 'nodeCount.count' (0)
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser state 'parse_count': key is 0000
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Bytes parsed: 96
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Parser 'parser': end
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Pipeline 'ingress': start
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Looking up key:
+
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000001100
+
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': hit with handle 0
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ethernet.dst_addr: EXACT     080000001100
+Action entry: NoAction - 
+
+[20:03:45.676] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Action entry is NoAction - 
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Action NoAction
+[20:03:45.676] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(185) Condition "hdr.ipv6.isValid()" (node_6) is true
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_sid_table'
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000d000000000000000000000001
+
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_sid_table': miss
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Action entry is NoAction - 
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Action NoAction
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.transit_table'
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000d000000000000000000000001
+
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.transit_table': hit with handle 0
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000d000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Action snt_ingress.srv6_int_ingress.insert_segment_list_2
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(97) Primitive hdr.ipv6.dst_addr = s1
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(98) Primitive hdr.ipv6.payload_len = hdr.ipv6.payload_len + 40
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(76) Primitive hdr.srh.setValid()
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(78) Primitive hdr.srh.next_hdr = 253
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(79) Primitive hdr.srh.hdr_ext_len = num_segments * 2
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(80) Primitive hdr.srh.routing_type = 4
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(81) Primitive hdr.srh.segment_left = num_segments - 1
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(82) Primitive hdr.srh.last_entry = num_segments - 1
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(83) Primitive hdr.srh.flags = 0
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(84) Primitive hdr.srh.tag = 0
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(85) Primitive hdr.ipv6.next_hdr = 8w43
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(100) Primitive hdr.segment_list[0].setValid()
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(101) Primitive hdr.segment_list[0].sid = s2
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(102) Primitive hdr.segment_list[1].setValid()
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(103) Primitive hdr.segment_list[1].sid = s1
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.routing_v6_table'
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000c000000000000000000000001
+
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.routing_v6_table': hit with handle 0
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000c000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_hop
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(44) Primitive hdr.ethernet.src_addr = hdr.ethernet.dst_addr
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(45) Primitive hdr.ethernet.dst_addr = dmac
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(46) Primitive hdr.ipv6.hop_limit = hdr.ipv6.hop_limit - 1
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(47) Primitive standard_metadata.egress_spec = port
+[20:03:45.677] [bmv2] [T] [thread 883006] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(198) Condition "hdr.ipv6.hop_limit == 0" (node_12) is false
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Pipeline 'ingress': end
+[20:03:45.677] [bmv2] [D] [thread 883006] [16.0] [cxt 0] Egress port is 1
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Pipeline 'egress': start
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is true
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] Applying table 'snt_egress.srv6_int_egress.swtrace'
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Looking up key:
+
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Table 'snt_egress.srv6_int_egress.swtrace': miss
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Action entry is snt_egress.srv6_int_egress.add_swtrace - 1,
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] Action snt_egress.srv6_int_egress.add_swtrace
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(213) Primitive hdr.nodeCount.count = hdr.nodeCount.count + 1
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(214) Primitive hdr.INT.push_front(1)
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(215) Primitive hdr.INT[0].setValid()
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(216) Primitive hdr.INT[0].swid = swid
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(217) Primitive hdr.INT[0].ingress_port = (ingress_port_t)standard_metadata.ingress_port
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(218) Primitive hdr.INT[0].ingress_global_timestamp = (ingress_global_timestamp_t)standard_metadata.ingress_global_timestamp
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(219) Primitive hdr.INT[0].egress_port = (egress_port_t)standard_metadata.egress_port
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(220) Primitive hdr.INT[0].egress_spec = (egressSpec_t)standard_metadata.egress_spec
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(221) Primitive hdr.INT[0].egress_global_timestamp = (egress_global_timestamp_t)standard_metadata.egress_global_timestamp
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(222) Primitive hdr.INT[0].enq_timestamp = (enq_timestamp_t)standard_metadata.enq_timestamp
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(223) Primitive hdr.INT[0].enq_qdepth = (enq_qdepth_t)standard_metadata.enq_qdepth
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(224) Primitive hdr.INT[0].deq_timedelta = (deq_timedelta_t)standard_metadata.deq_timedelta
+[20:03:45.677] [bmv2] [T] [thread 883008] [16.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(225) Primitive hdr.INT[0].deq_qdepth = (deq_qdepth_t)standard_metadata.deq_qdepth
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Pipeline 'egress': end
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Deparser 'deparser': start
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Updating checksum 'cksum'
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Deparsing header 'ethernet'
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Deparsing header 'ipv6'
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Deparsing header 'srh'
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Deparsing header 'segment_list[0]'
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Deparsing header 'segment_list[1]'
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Deparsing header 'nodeCount'
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Deparsing header 'INT[0]'
+[20:03:45.677] [bmv2] [D] [thread 883008] [16.0] [cxt 0] Deparser 'deparser': end
+[20:03:45.677] [bmv2] [D] [thread 883011] [16.0] [cxt 0] Transmitting packet of size 130 out of port 1
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Processing packet received on port 0
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser': start
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'start'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'start': key is 0000
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 0
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'parse_ethernet'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Extracting header 'ethernet'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'parse_ethernet': key is 86dd
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 14
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Extracting header 'ipv6'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._ip_proto3' from field 'ipv6.next_hdr' (43)
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'parse_ipv6': key is 2b
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 54
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'parse_srv6'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Extracting header 'srh'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'parse_srv6' has no switch, going to default next state
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 62
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Extracting to header stack 0, next header is 11
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser set: setting field 'scalars.tmp' from expression, new value is 1
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'parse_segment_list': key is 01
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 78
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'mark_next_sid'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._next_sid2' from expression, new value is 334965455888536750142931430313174237186
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'mark_next_sid' has no switch, going to default next state
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 78
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 0
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'check_last_sid': key is 00
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 78
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'parse_segment_list'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Extracting to header stack 0, next header is 12
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser set: setting field 'scalars.tmp' from expression, new value is 0
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'parse_segment_list': key is 00
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 94
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'check_last_sid'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser set: setting field 'scalars.tmp_0' from expression, new value is 1
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'check_last_sid': key is 01
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 94
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'parse_srv6_next_hdr'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'parse_srv6_next_hdr': key is fd
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 94
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser' entering state 'parse_count'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Extracting header 'nodeCount'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser set: setting field 'scalars.userMetadata._parser_metadata_remaining5' from field 'nodeCount.count' (0)
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser state 'parse_count': key is 0000
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Bytes parsed: 96
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Parser 'parser': end
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Pipeline 'ingress': start
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Applying table 'tbl_srv6_int_ingress_set_next_int_header'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Looking up key:
+
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Table 'tbl_srv6_int_ingress_set_next_int_header': miss
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_int_header - 
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_int_header
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(162) Primitive hdr.srh.next_hdr = 253
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(168) Condition "standard_metadata.ingress_port == CPU_PORT" (node_3) is false
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_mac_table'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Looking up key:
+* hdr.ethernet.dst_addr: 080000001100
+
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_mac_table': hit with handle 0
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ethernet.dst_addr: EXACT     080000001100
+Action entry: NoAction - 
+
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Action entry is NoAction - 
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Action NoAction
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(185) Condition "hdr.ipv6.isValid()" (node_6) is true
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.local_sid_table'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000d000000000000000000000001
+
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.local_sid_table': miss
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Action entry is NoAction - 
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Action NoAction
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.transit_table'
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000d000000000000000000000001
+
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.transit_table': hit with handle 0
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000d000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+
+[20:15:57.848] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.insert_segment_list_2 - fc00000c000000000000000000000001,fc00000d000000000000000000000001,
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Action snt_ingress.srv6_int_ingress.insert_segment_list_2
+[20:15:57.848] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(97) Primitive hdr.ipv6.dst_addr = s1
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(98) Primitive hdr.ipv6.payload_len = hdr.ipv6.payload_len + 40
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(76) Primitive hdr.srh.setValid()
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(78) Primitive hdr.srh.next_hdr = 253
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(79) Primitive hdr.srh.hdr_ext_len = num_segments * 2
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(80) Primitive hdr.srh.routing_type = 4
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(81) Primitive hdr.srh.segment_left = num_segments - 1
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(82) Primitive hdr.srh.last_entry = num_segments - 1
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(83) Primitive hdr.srh.flags = 0
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(84) Primitive hdr.srh.tag = 0
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(85) Primitive hdr.ipv6.next_hdr = 8w43
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(100) Primitive hdr.segment_list[0].setValid()
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(101) Primitive hdr.segment_list[0].sid = s2
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(102) Primitive hdr.segment_list[1].setValid()
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(103) Primitive hdr.segment_list[1].sid = s1
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Applying table 'snt_ingress.srv6_int_ingress.routing_v6_table'
+[20:15:57.849] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Looking up key:
+* hdr.ipv6.dst_addr   : fc00000c000000000000000000000001
+
+[20:15:57.849] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Table 'snt_ingress.srv6_int_ingress.routing_v6_table': hit with handle 0
+[20:15:57.849] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv6.dst_addr   : LPM       fc00000c000000000000000000000001/64
+Action entry: snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+
+[20:15:57.849] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Action entry is snt_ingress.srv6_int_ingress.set_next_hop - 80000001000,1,
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] Action snt_ingress.srv6_int_ingress.set_next_hop
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(44) Primitive hdr.ethernet.src_addr = hdr.ethernet.dst_addr
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(45) Primitive hdr.ethernet.dst_addr = dmac
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(46) Primitive hdr.ipv6.hop_limit = hdr.ipv6.hop_limit - 1
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(47) Primitive standard_metadata.egress_spec = port
+[20:15:57.849] [bmv2] [T] [thread 883006] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(198) Condition "hdr.ipv6.hop_limit == 0" (node_12) is false
+[20:15:57.849] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Pipeline 'ingress': end
+[20:15:57.849] [bmv2] [D] [thread 883006] [17.0] [cxt 0] Egress port is 1
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Pipeline 'egress': start
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(239) Condition "standard_metadata.egress_port == CPU_PORT" (node_16) is false
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(247) Condition "hdr.nodeCount.isValid()" (node_18) is true
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] Applying table 'snt_egress.srv6_int_egress.swtrace'
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Looking up key:
+
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Table 'snt_egress.srv6_int_egress.swtrace': miss
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Action entry is snt_egress.srv6_int_egress.add_swtrace - 1,
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] Action snt_egress.srv6_int_egress.add_swtrace
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(213) Primitive hdr.nodeCount.count = hdr.nodeCount.count + 1
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(214) Primitive hdr.INT.push_front(1)
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(215) Primitive hdr.INT[0].setValid()
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(216) Primitive hdr.INT[0].swid = swid
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(217) Primitive hdr.INT[0].ingress_port = (ingress_port_t)standard_metadata.ingress_port
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(218) Primitive hdr.INT[0].ingress_global_timestamp = (ingress_global_timestamp_t)standard_metadata.ingress_global_timestamp
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(219) Primitive hdr.INT[0].egress_port = (egress_port_t)standard_metadata.egress_port
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(220) Primitive hdr.INT[0].egress_spec = (egressSpec_t)standard_metadata.egress_spec
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(221) Primitive hdr.INT[0].egress_global_timestamp = (egress_global_timestamp_t)standard_metadata.egress_global_timestamp
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(222) Primitive hdr.INT[0].enq_timestamp = (enq_timestamp_t)standard_metadata.enq_timestamp
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(223) Primitive hdr.INT[0].enq_qdepth = (enq_qdepth_t)standard_metadata.enq_qdepth
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(224) Primitive hdr.INT[0].deq_timedelta = (deq_timedelta_t)standard_metadata.deq_timedelta
+[20:15:57.849] [bmv2] [T] [thread 883008] [17.0] [cxt 0] p4_src/include_new/srv6_int_transit.p4(225) Primitive hdr.INT[0].deq_qdepth = (deq_qdepth_t)standard_metadata.deq_qdepth
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Pipeline 'egress': end
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Deparser 'deparser': start
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Updating checksum 'cksum'
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Deparsing header 'ethernet'
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Deparsing header 'ipv6'
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Deparsing header 'srh'
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Deparsing header 'segment_list[0]'
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Deparsing header 'segment_list[1]'
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Deparsing header 'nodeCount'
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Deparsing header 'INT[0]'
+[20:15:57.849] [bmv2] [D] [thread 883008] [17.0] [cxt 0] Deparser 'deparser': end
+[20:15:57.849] [bmv2] [D] [thread 883011] [17.0] [cxt 0] Transmitting packet of size 131 out of port 1

@@ -1,0 +1,4 @@
+table_set_default swtrace add_swtrace 2
+table_add srv6_int_ingress.local_mac_table NoAction 08:00:00:00:10:00 => 
+table_add srv6_int_ingress.local_sid_table srv6_int_ingress.end fc00:c::1/64 =>
+table_add srv6_int_ingress.routing_v6_table srv6_int_ingress.set_next_hop fc00:d::1/64 => 08:00:00:00:02:00 1

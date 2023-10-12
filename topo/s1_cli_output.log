@@ -1,39 +1,303 @@
-Could not connect to thrift client on port 8001
-Make sure the switch is running and that you have the right port
-Could not connect to thrift client on port 8001
-Make sure the switch is running and that you have the right port
-Could not connect to thrift client on port 8001
-Make sure the switch is running and that you have the right port
-Could not connect to thrift client on port 8001
-Make sure the switch is running and that you have the right port
-Could not connect to thrift client on port 8001
-Make sure the switch is running and that you have the right port
 Obtaining JSON from switch...
 Done
 Control utility for runtime P4 table manipulation
-RuntimeCmd: Adding entry to exact match table srv6_ingress.local_mac_table
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
 match key:           EXACT-08:00:00:00:11:00
 action:              NoAction
 runtime data:        
 Entry has been added with handle 0
-RuntimeCmd: Adding entry to lpm match table srv6_ingress.local_sid_table
-match key:           LPM-fc:00:00:0a:00:00:00:00:00:00:00:00:00:00:00:01/64
-action:              srv6_ingress.end
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Entry has been added with handle 0
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
 runtime data:        
 Entry has been added with handle 0
-RuntimeCmd: Adding entry to lpm match table srv6_ingress.transit_table
-match key:           LPM-fc:00:00:12:00:00:00:00:00:00:00:00:00:00:00:02/64
-action:              srv6_ingress.insert_segment_list_1
-runtime data:        fc:00:00:0a:00:00:00:00:00:00:00:00:00:00:00:01
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
 Entry has been added with handle 0
-RuntimeCmd: Adding entry to lpm match table srv6_ingress.routing_v6_table
-match key:           LPM-fc:00:00:12:00:00:00:00:00:00:00:00:00:00:00:02/64
-action:              srv6_ingress.set_next_hop
-runtime data:        08:00:00:00:02:00	00:02
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
 Entry has been added with handle 0
-RuntimeCmd: Adding entry to lpm match table srv6_ingress.routing_v6_table
-match key:           LPM-fc:00:00:0a:00:00:00:00:00:00:00:00:00:00:00:02/64
-action:              srv6_ingress.set_next_hop
-runtime data:        08:00:00:00:01:00	00:01
-Entry has been added with handle 1
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Entry has been added with handle 0
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Entry has been added with handle 0
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Entry has been added with handle 0
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.transit_table
+match key:           LPM-fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.insert_segment_list_2
+runtime data:        fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01	fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01
+Entry has been added with handle 0
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.transit_table
+match key:           LPM-fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.insert_segment_list_2
+runtime data:        fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01	fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.transit_table
+match key:           LPM-fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.insert_segment_list_2
+runtime data:        fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01	fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01
+Entry has been added with handle 0
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.transit_table
+match key:           LPM-fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.insert_segment_list_2
+runtime data:        fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01	fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01
+Entry has been added with handle 0
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.transit_table
+match key:           LPM-fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.insert_segment_list_2
+runtime data:        fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01	fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01
+Entry has been added with handle 0
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Setting default action of swtrace
+action:              add_swtrace
+runtime data:        00:00:00:01
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.transit_table
+match key:           LPM-fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.insert_segment_list_2
+runtime data:        fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01	fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Setting default action of swtrace
+action:              add_swtrace
+runtime data:        00:00:00:01
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.transit_table
+match key:           LPM-fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.insert_segment_list_2
+runtime data:        fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01	fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Setting default action of swtrace
+action:              add_swtrace
+runtime data:        00:00:00:01
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.transit_table
+match key:           LPM-fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.insert_segment_list_2
+runtime data:        fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01	fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01
+Entry has been added with handle 0
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Setting default action of swtrace
+action:              add_swtrace
+runtime data:        00:00:00:01
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.transit_table
+match key:           LPM-fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.insert_segment_list_2
+runtime data:        fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01	fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01
+Entry has been added with handle 0
+RuntimeCmd: 
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Setting default action of swtrace
+action:              add_swtrace
+runtime data:        00:00:00:01
+RuntimeCmd: Adding entry to exact match table srv6_int_ingress.local_mac_table
+match key:           EXACT-08:00:00:00:11:00
+action:              NoAction
+runtime data:        
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.routing_v6_table
+match key:           LPM-fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.set_next_hop
+runtime data:        08:00:00:00:10:00	00:01
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to lpm match table srv6_int_ingress.transit_table
+match key:           LPM-fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01/64
+action:              srv6_int_ingress.insert_segment_list_2
+runtime data:        fc:00:00:0c:00:00:00:00:00:00:00:00:00:00:00:01	fc:00:00:0d:00:00:00:00:00:00:00:00:00:00:00:01
+Entry has been added with handle 0
 RuntimeCmd: 

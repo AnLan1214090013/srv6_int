@@ -1,7 +1,7 @@
-# 1 "p4_src/int.p4"
+# 1 "p4_src/srv6_int.p4"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "p4_src/int.p4"
+# 1 "p4_src/srv6_int.p4"
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -113,7 +113,7 @@ extern bool static_assert(bool check, string message);
 
 /// Like the above but using a default message.
 extern bool static_assert(bool check);
-# 19 "p4_src/int.p4" 2
+# 19 "p4_src/srv6_int.p4" 2
 # 1 "/usr/local/share/p4c/p4include/v1model.p4" 1
 /*
 Copyright 2013-present Barefoot Networks, Inc.
@@ -899,9 +899,8 @@ package V1Switch<H, M>(Parser<H, M> p,
                        ComputeChecksum<H, M> ck,
                        Deparser<H> dep
                        );
-# 20 "p4_src/int.p4" 2
-
-# 1 "p4_src/include/defines.p4" 1
+# 20 "p4_src/srv6_int.p4" 2
+# 1 "p4_src/include_new/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -917,8 +916,11 @@ package V1Switch<H, M>(Parser<H, M> p,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 25 "p4_src/include/defines.p4"
+# 26 "p4_src/include_new/defines.p4"
 //srv6
+
+
+//int
 
 
 typedef bit<48> mac_t;
@@ -931,11 +933,23 @@ typedef bit<16> next_hop_id_t;
 typedef bit<128> ipv6_addr_t;
 typedef bit<48> mac_addr_t;
 
+//int 
+typedef bit<31> switchID_t;
+typedef bit<9> ingress_port_t;
+typedef bit<9> egress_port_t;
+typedef bit<9> egressSpec_t;
+typedef bit<48> ingress_global_timestamp_t;
+typedef bit<48> egress_global_timestamp_t;
+typedef bit<32> enq_timestamp_t;
+typedef bit<19> enq_qdepth_t;
+typedef bit<32> deq_timedelta_t;
+typedef bit<19> deq_qdepth_t;
+
 const port_t CPU_PORT = 255;
-# 48 "p4_src/include/defines.p4"
+# 64 "p4_src/include_new/defines.p4"
 //srv6 defines
-# 22 "p4_src/int.p4" 2
-# 1 "p4_src/include/headers.p4" 1
+# 21 "p4_src/srv6_int.p4" 2
+# 1 "p4_src/include_new/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -955,7 +969,7 @@ const port_t CPU_PORT = 255;
 
 
 
-# 1 "p4_src/include/defines.p4" 1
+# 1 "p4_src/include_new/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -971,7 +985,7 @@ const port_t CPU_PORT = 255;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "p4_src/include/headers.p4" 2
+# 21 "p4_src/include_new/headers.p4" 2
 
 @controller_header("packet_in")
 header packet_in_header_t {
@@ -1027,292 +1041,6 @@ header udp_t {
     bit<16> length_;
     bit<16> checksum;
 }
-# 23 "p4_src/int.p4" 2
-# 1 "p4_src/include/actions.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-# 1 "p4_src/include/headers.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-# 21 "p4_src/include/actions.p4" 2
-# 1 "p4_src/include/defines.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-# 22 "p4_src/include/actions.p4" 2
-
-action send_to_cpu(inout standard_metadata_t standard_metadata) {
-    standard_metadata.egress_spec = CPU_PORT;
-}
-
-action set_egress_port(inout standard_metadata_t standard_metadata, port_t port) {
-    standard_metadata.egress_spec = port;
-}
-
-action _drop(inout standard_metadata_t standard_metadata) {
-    mark_to_drop(standard_metadata);
-}
-# 24 "p4_src/int.p4" 2
-# 1 "p4_src/include/int_definitions.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* -*- P4_16 -*- */
-
-
-
-# 1 "p4_src/include/defines.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-# 22 "p4_src/include/int_definitions.p4" 2
-
-/* indicate INT at LSB of DSCP */
-const bit<6> INT_DSCP = 0x1;
-
-typedef bit<48> timestamp_t;
-typedef bit<32> switch_id_t;
-
-const bit<8> INT_HEADER_LEN_WORD = 4;
-
-const bit<8> CPU_MIRROR_SESSION_ID = 250;
-const bit<32> REPORT_MIRROR_SESSION_ID = 500;
-# 25 "p4_src/int.p4" 2
-# 1 "p4_src/include/int_headers.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* -*- P4_16 -*- */
-
-
-
-# 1 "p4_src/include/telemetry_report_headers.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* -*- P4_16 -*- */
-
-
-
-const bit<4> NPROTO_ETHERNET = 0;
-const bit<4> NPROTO_TELEMETRY_DROP_HEADER = 1;
-const bit<4> NPROTO_TELEMETRY_SWITCH_LOCAL_HEADER = 2;
-
-
-// TODO
-const bit<6> hw_id = 1;
-
-// Report Telemetry Headers
-header report_fixed_header_t {
-    bit<4> ver;
-    bit<4> nproto;
-    bit<1> d;
-    bit<1> q;
-    bit<1> f;
-    bit<15> rsvd;
-    bit<6> hw_id;
-    bit<32> seq_no;
-    bit<32> ingress_tstamp;
-}
-const bit<16> report_fixed_header_len = 12;
-
-// Telemetry drop report header
-header drop_report_header_t {
-    bit<32> switch_id;
-    bit<16> ingress_port_id;
-    bit<16> egress_port_id;
-    bit<8> queue_id;
-    bit<8> drop_reason;
-    bit<16> pad;
-}
-const bit<16> drop_report_header_len = 12;
-
-// Switch Local Report Header
-header local_report_header_t {
-    bit<32> switch_id;
-    bit<16> ingress_port_id;
-    bit<16> egress_port_id;
-    bit<8> queue_id;
-    bit<24> queue_occupancy;
-    bit<32> egress_tstamp;
-}
-const bit<16> local_report_header_len = 16;
-
-header_union local_report_t {
-    drop_report_header_t drop_report_header;
-    local_report_header_t local_report_header;
-}
-# 22 "p4_src/include/int_headers.p4" 2
-
-// INT headers
-header int_header_t {
-    bit<2> ver;
-    bit<2> rep;
-    bit<1> c;
-    bit<1> e;
-    bit<5> rsvd1;
-    bit<5> ins_cnt;
-    bit<8> max_hop_cnt;
-    bit<8> total_hop_cnt;
-    bit<4> instruction_mask_0003; /* split the bits for lookup */
-    bit<4> instruction_mask_0407;
-    bit<4> instruction_mask_0811;
-    bit<4> instruction_mask_1215;
-    bit<16> rsvd2;
-}
-
-// INT meta-value headers - different header for each value type
-header int_switch_id_t {
-    bit<32> switch_id;
-}
-header int_port_ids_t {
-    bit<16> ingress_port_id;
-    bit<16> egress_port_id;
-}
-header int_hop_latency_t {
-    bit<32> hop_latency;
-}
-header int_q_occupancy_t {
-    bit<8> q_id;
-    bit<24> q_occupancy;
-}
-header int_ingress_tstamp_t {
-    bit<32> ingress_tstamp;
-}
-header int_egress_tstamp_t {
-    bit<32> egress_tstamp;
-}
-header int_q_congestion_t {
-    bit<8> q_id;
-    bit<24> q_congestion;
-}
-header int_egress_port_tx_util_t {
-    bit<32> egress_port_tx_util;
-}
-
-header int_data_t {
-    // Maximum int metadata stack size in bits:
-    // (0xFF -4) * 32 (excluding INT shim header, tail header and INT header)
-    varbit<8032> data;
-}
-
-// INT shim header for TCP/UDP
-header intl4_shim_t {
-    bit<8> int_type;
-    bit<8> rsvd1;
-    bit<8> len;
-    bit<8> rsvd2;
-}
-// INT tail header for TCP/UDP
-header intl4_tail_t {
-    bit<8> next_proto;
-    bit<16> dest_port;
-    bit<8> dscp;
-}
-
-struct int_metadata_t {
-    switch_id_t switch_id;
-    bit<16> insert_byte_cnt;
-    bit<1> source;
-    bit<1> sink;
-    bit<8> mirror_id;
-    bit<16> flow_id;
-    bit<8> metadata_len;
-}
-
 
 
 // SRV6 headers
@@ -1341,54 +1069,64 @@ header srv6_segment_list_t{
     bit<128> sid;
 }
 
+//int header
+header int_t {
+    switchID_t swid;
+    ingress_port_t ingress_port;
+    egress_port_t egress_port;
+    egressSpec_t egress_spec;
+    ingress_global_timestamp_t ingress_global_timestamp;
+    egress_global_timestamp_t egress_global_timestamp;
+    enq_timestamp_t enq_timestamp;
+    enq_qdepth_t enq_qdepth;
+    deq_timedelta_t deq_timedelta;
+    deq_qdepth_t deq_qdepth;
+}
+header nodeCount_t{
+    bit<16> count;
+}
+
+struct ingress_metadata_t {
+    bit<16> count;
+}
+
+struct parser_metadata_t {
+    bit<16> remaining;
+}
+
+
 struct headers_t {
     packet_out_header_t packet_out;
     packet_in_header_t packet_in;
-    // INT Report Encapsulation
-    ethernet_t report_ethernet;
-    ipv4_t report_ipv4;
-    udp_t report_udp;
-    // INT Report Headers
-    report_fixed_header_t report_fixed_header;
-    local_report_t report_local;
+
     // Original packet's headers
     ethernet_t ethernet;
     ipv4_t ipv4;
     tcp_t tcp;
     udp_t udp;
-    // INT specific headers
-    intl4_shim_t intl4_shim;
-    int_header_t int_header;
-    int_data_t int_data;
-    int_switch_id_t int_switch_id;
-    int_port_ids_t int_port_ids;
-    int_hop_latency_t int_hop_latency;
-    int_q_occupancy_t int_q_occupancy;
-    int_ingress_tstamp_t int_ingress_tstamp;
-    int_egress_tstamp_t int_egress_tstamp;
-    int_q_congestion_t int_q_congestion;
-    int_egress_port_tx_util_t int_egress_tx_util;
-    intl4_tail_t intl4_tail;
+
     //srv6
     ipv6_t ipv6;
     srv6_header_t srh;
     srv6_segment_list_t[6] segment_list;
+
+    //int
+    nodeCount_t nodeCount;
+    int_t[6] INT;
 }
 
 struct local_metadata_t {
     bit<16> l4_src_port;
     bit<16> l4_dst_port;
-    next_hop_id_t next_hop_id;
-    bit<16> selector;
-    int_metadata_t int_meta;
-    //report_metadata_t report_meta;
-
     //srv6
     ipv6_addr_t next_sid;
     bit<8> ip_proto;
+    //int
+    ingress_metadata_t ingress_metadata;
+    parser_metadata_t parser_metadata;
 }
-# 26 "p4_src/int.p4" 2
-# 1 "p4_src/include/packet_io.p4" 1
+# 22 "p4_src/srv6_int.p4" 2
+# 1 "p4_src/include_new/actions.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1408,7 +1146,7 @@ struct local_metadata_t {
 
 
 
-# 1 "p4_src/include/headers.p4" 1
+# 1 "p4_src/include_new/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1424,8 +1162,8 @@ struct local_metadata_t {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "p4_src/include/packet_io.p4" 2
-# 1 "p4_src/include/defines.p4" 1
+# 21 "p4_src/include_new/actions.p4" 2
+# 1 "p4_src/include_new/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1441,105 +1179,21 @@ struct local_metadata_t {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 22 "p4_src/include/packet_io.p4" 2
+# 22 "p4_src/include_new/actions.p4" 2
 
-control packetio_ingress(inout headers_t hdr,
-                         inout standard_metadata_t standard_metadata) {
-    apply {
-        if (standard_metadata.ingress_port == CPU_PORT) {
-            standard_metadata.egress_spec = hdr.packet_out.egress_port;
-            hdr.packet_out.setInvalid();
-            exit;
-        }
-    }
+action send_to_cpu(inout standard_metadata_t standard_metadata) {
+    standard_metadata.egress_spec = CPU_PORT;
 }
 
-control packetio_egress(inout headers_t hdr,
-                        inout standard_metadata_t standard_metadata) {
-    apply {
-        if (standard_metadata.egress_port == CPU_PORT) {
-            hdr.packet_in.setValid();
-            hdr.packet_in.ingress_port = standard_metadata.ingress_port;
-        }
-    }
-}
-# 27 "p4_src/int.p4" 2
-# 1 "p4_src/include/port_counters.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-# 1 "p4_src/include/headers.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-# 21 "p4_src/include/port_counters.p4" 2
-# 1 "p4_src/include/defines.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-# 22 "p4_src/include/port_counters.p4" 2
-
-control port_counters_ingress(inout headers_t hdr,
-                              inout standard_metadata_t standard_metadata) {
-
-    counter(511, CounterType.packets) ingress_port_counter;
-
-    apply {
-        ingress_port_counter.count((bit<32>) standard_metadata.ingress_port);
-    }
+action set_egress_port(inout standard_metadata_t standard_metadata, port_t port) {
+    standard_metadata.egress_spec = port;
 }
 
-control port_counters_egress(inout headers_t hdr,
-                             inout standard_metadata_t standard_metadata) {
-
-    counter(511, CounterType.packets) egress_port_counter;
-
-    apply {
-        egress_port_counter.count((bit<32>) standard_metadata.egress_port);
-    }
+action _drop(inout standard_metadata_t standard_metadata) {
+    mark_to_drop(standard_metadata);
 }
-# 28 "p4_src/int.p4" 2
-# 1 "p4_src/include/table0.p4" 1
+# 23 "p4_src/srv6_int.p4" 2
+# 1 "p4_src/include_new/checksums.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1559,7 +1213,7 @@ control port_counters_egress(inout headers_t hdr,
 
 
 
-# 1 "p4_src/include/headers.p4" 1
+# 1 "p4_src/include_new/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1575,99 +1229,7 @@ control port_counters_egress(inout headers_t hdr,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "p4_src/include/table0.p4" 2
-# 1 "p4_src/include/defines.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-# 22 "p4_src/include/table0.p4" 2
-
-control table0_control(inout headers_t hdr,
-                       inout local_metadata_t local_metadata,
-                       inout standard_metadata_t standard_metadata) {
-
-    direct_counter(CounterType.packets_and_bytes) table0_counter;
-
-    action set_next_hop_id(next_hop_id_t next_hop_id) {
-        local_metadata.next_hop_id = next_hop_id;
-    }
-
-    table table0 {
-        key = {
-            standard_metadata.ingress_port : ternary;
-            hdr.ethernet.src_addr : ternary;
-            hdr.ethernet.dst_addr : ternary;
-            hdr.ethernet.ether_type : ternary;
-            hdr.ipv4.src_addr : ternary;
-            hdr.ipv4.dst_addr : ternary;
-            hdr.ipv4.protocol : ternary;
-            local_metadata.l4_src_port : ternary;
-            local_metadata.l4_dst_port : ternary;
-        }
-        actions = {
-            set_egress_port(standard_metadata);
-            send_to_cpu(standard_metadata);
-            set_next_hop_id();
-            _drop(standard_metadata);
-        }
-        const default_action = _drop(standard_metadata);
-        counters = table0_counter;
-    }
-
-    apply {
-        table0.apply();
-     }
-}
-# 29 "p4_src/int.p4" 2
-# 1 "p4_src/include/checksums.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-
-# 1 "p4_src/include/headers.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-# 21 "p4_src/include/checksums.p4" 2
+# 21 "p4_src/include_new/checksums.p4" 2
 
 control verify_checksum_control(inout headers_t hdr,
                                 inout local_metadata_t local_metadata) {
@@ -1682,24 +1244,24 @@ control compute_checksum_control(inout headers_t hdr,
         // Need to recompute for the cloned packet.
         //TODO: https://github.com/p4lang/p4app/issues/43#issuecomment-378061934
         update_checksum(true,
-            { hdr.report_ipv4.version,
-                hdr.report_ipv4.ihl,
-                hdr.report_ipv4.dscp,
-                hdr.report_ipv4.ecn,
-                hdr.report_ipv4.len,
-                hdr.report_ipv4.identification,
-                hdr.report_ipv4.flags,
-                hdr.report_ipv4.frag_offset,
-                hdr.report_ipv4.ttl,
-                hdr.report_ipv4.protocol,
-                hdr.report_ipv4.src_addr,
-                hdr.report_ipv4.dst_addr
+            { hdr.ipv4.version,
+                hdr.ipv4.ihl,
+                hdr.ipv4.dscp,
+                hdr.ipv4.ecn,
+                hdr.ipv4.len,
+                hdr.ipv4.identification,
+                hdr.ipv4.flags,
+                hdr.ipv4.frag_offset,
+                hdr.ipv4.ttl,
+                hdr.ipv4.protocol,
+                hdr.ipv4.src_addr,
+                hdr.ipv4.dst_addr
             },
-            hdr.report_ipv4.hdr_checksum, HashAlgorithm.csum16);
+            hdr.ipv4.hdr_checksum, HashAlgorithm.csum16);
     }
 }
-# 30 "p4_src/int.p4" 2
-# 1 "p4_src/include/int_parser.p4" 1
+# 24 "p4_src/srv6_int.p4" 2
+# 1 "p4_src/include_new/srv6_int_parser.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -1720,7 +1282,8 @@ control compute_checksum_control(inout headers_t hdr,
 
 
 
-parser int_parser (
+
+parser srv6_int_parser (
     packet_in packet,
     out headers_t hdr,
     inout local_metadata_t local_metadata,
@@ -1770,49 +1333,13 @@ parser int_parser (
         packet.extract(hdr.tcp);
         local_metadata.l4_src_port = hdr.tcp.src_port;
         local_metadata.l4_dst_port = hdr.tcp.dst_port;
-        transition select((hdr.ipv4.dscp & INT_DSCP) == INT_DSCP) {
-            true: parse_intl4_shim;
-            default: accept;
-        }
+        transition accept;
     }
 
     state parse_udp {
         packet.extract(hdr.udp);
         local_metadata.l4_src_port = hdr.udp.src_port;
         local_metadata.l4_dst_port = hdr.udp.dst_port;
-        transition select((hdr.ipv4.dscp & INT_DSCP) == INT_DSCP) {
-            true: parse_intl4_shim;
-            default: accept;
-        }
-    }
-
-
-
-    state parse_intl4_shim {
-        packet.extract(hdr.intl4_shim);
-        transition parse_int_header;
-    }
-
-    state parse_int_header {
-        packet.extract(hdr.int_header);
-        // If there is no INT metadata but the INT header (and corresponding shim header
-        // and tail header) exists, default value of length field in shim header
-        // should be INT_HEADER_LEN_WORD.
-        local_metadata.int_meta.metadata_len = hdr.intl4_shim.len - INT_HEADER_LEN_WORD;
-        transition select (local_metadata.int_meta.metadata_len) {
-            0: parse_intl4_tail;
-            default: parse_int_data;
-        }
-    }
-
-    state parse_int_data {
-        // Parse INT metadata, not INT header, INT shim header and INT tail header
-        packet.extract(hdr.int_data, (bit<32>) ((hdr.intl4_shim.len - INT_HEADER_LEN_WORD) << 5));
-        transition parse_intl4_tail;
-    }
-
-    state parse_intl4_tail {
-        packet.extract(hdr.intl4_tail);
         transition accept;
     }
 
@@ -1845,672 +1372,57 @@ parser int_parser (
     state parse_srv6_next_hdr{
         transition select(hdr.srh.next_hdr){
             8w6: parse_tcp;
+            253: parse_count;
             8w17: parse_udp;
             default: accept;
         }
     }
 
+    //int
+    state parse_count{
+        packet.extract(hdr.nodeCount);
+        local_metadata.parser_metadata.remaining = hdr.nodeCount.count;
+        transition select(local_metadata.parser_metadata.remaining) {
+            0 : accept;
+            default: parse_int;
+        }
+    }
+
+    state parse_int {
+        packet.extract(hdr.INT.next);
+        local_metadata.parser_metadata.remaining = local_metadata.parser_metadata.remaining - 1;
+        transition select(local_metadata.parser_metadata.remaining) {
+            0 : accept;
+            default: parse_int;
+        }
+    }
+
 }
 
 
 
-control int_deparser(
+control srv6_int_deparser(
     packet_out packet,
     in headers_t hdr) {
     apply {
-        packet.emit(hdr.report_ethernet);
-        packet.emit(hdr.report_ipv4);
-        packet.emit(hdr.report_udp);
-        packet.emit(hdr.report_fixed_header);
         packet.emit(hdr.packet_in);
         packet.emit(hdr.ethernet);
         packet.emit(hdr.ipv4);
         packet.emit(hdr.tcp);
         packet.emit(hdr.udp);
-        packet.emit(hdr.intl4_shim);
-        packet.emit(hdr.int_header);
-        packet.emit(hdr.int_switch_id);
-        packet.emit(hdr.int_port_ids);
-        packet.emit(hdr.int_hop_latency);
-        packet.emit(hdr.int_q_occupancy);
-        packet.emit(hdr.int_ingress_tstamp);
-        packet.emit(hdr.int_egress_tstamp);
-        packet.emit(hdr.int_q_congestion);
-        packet.emit(hdr.int_egress_tx_util);
-        packet.emit(hdr.int_data);
-        packet.emit(hdr.intl4_tail);
 
         //srv6
         packet.emit(hdr.ipv6);
         packet.emit(hdr.srh);
         packet.emit(hdr.segment_list);
+
+        //int
+        packet.emit(hdr.nodeCount);
+        packet.emit(hdr.INT);
     }
 }
-# 31 "p4_src/int.p4" 2
-# 1 "p4_src/include/int_source.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* -*- P4_16 -*- */
-
-
-
-// Insert INT header to the packet
-control process_int_source (
-    inout headers_t hdr,
-    inout local_metadata_t local_metadata,
-    inout standard_metadata_t standard_metadata) {
-
-    direct_counter(CounterType.packets_and_bytes) counter_int_source;
-
-    action int_source(bit<8> max_hop, bit<5> ins_cnt, bit<4> ins_mask0003, bit<4> ins_mask0407) {
-        // insert INT shim header
-        hdr.intl4_shim.setValid();
-        // int_type: Hop-by-hop type (1) , destination type (2)
-        hdr.intl4_shim.int_type = 1;
-        hdr.intl4_shim.len = INT_HEADER_LEN_WORD;
-
-        // insert INT header
-        hdr.int_header.setValid();
-        hdr.int_header.ver = 0;
-        hdr.int_header.rep = 0;
-        hdr.int_header.c = 0;
-        hdr.int_header.e = 0;
-        hdr.int_header.rsvd1 = 0;
-        hdr.int_header.ins_cnt = ins_cnt;
-        hdr.int_header.max_hop_cnt = max_hop;
-        hdr.int_header.total_hop_cnt = 0;
-        hdr.int_header.instruction_mask_0003 = ins_mask0003;
-        hdr.int_header.instruction_mask_0407 = ins_mask0407;
-        hdr.int_header.instruction_mask_0811 = 0; // not supported
-        hdr.int_header.instruction_mask_1215 = 0; // not supported
-
-        // insert INT tail header
-        hdr.intl4_tail.setValid();
-        hdr.intl4_tail.next_proto = hdr.ipv4.protocol;
-        hdr.intl4_tail.dest_port = local_metadata.l4_dst_port;
-        hdr.intl4_tail.dscp = (bit<8>) hdr.ipv4.dscp;
-
-        // add the header len (8 bytes) to total len
-        hdr.ipv4.len = hdr.ipv4.len + 16;
-        hdr.udp.length_ = hdr.udp.length_ + 16;
-    }
-    action int_source_dscp(bit<8> max_hop, bit<5> ins_cnt, bit<4> ins_mask0003, bit<4> ins_mask0407) {
-        int_source(max_hop, ins_cnt, ins_mask0003, ins_mask0407);
-        hdr.ipv4.dscp = INT_DSCP;
-    }
-
-    table tb_int_source {
-        key = {
-            hdr.ipv4.src_addr: ternary;
-            hdr.ipv4.dst_addr: ternary;
-            local_metadata.l4_src_port: ternary;
-            local_metadata.l4_dst_port: ternary;
-        }
-        actions = {
-            int_source_dscp;
-        }
-        counters = counter_int_source;
-        size = 1024;
-    }
-
-    apply {
-        tb_int_source.apply();
-    }
-}
-
-control process_set_source_sink (
-    inout headers_t hdr,
-    inout local_metadata_t local_metadata,
-    inout standard_metadata_t standard_metadata) {
-
-    direct_counter(CounterType.packets_and_bytes) counter_set_source_sink;
-
-    action int_set_source () {
-        local_metadata.int_meta.source = 1;
-    }
-
-    action int_set_sink () {
-        local_metadata.int_meta.sink = 1;
-    }
-
-    table tb_set_source_sink {
-        key = {
-            hdr.ipv4.src_addr: ternary;
-            hdr.ipv4.dst_addr: ternary;
-            local_metadata.l4_src_port: ternary;
-            local_metadata.l4_dst_port: ternary;
-        }
-        actions = {
-            int_set_source;
-            int_set_sink;
-        }
-        counters = counter_set_source_sink;
-        size = 1024;
-    }
-
-    apply {
-        tb_set_source_sink.apply();
-    }
-}
-# 32 "p4_src/int.p4" 2
-# 1 "p4_src/include/int_transit.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* -*- P4_16 -*- */
-
-
-control process_int_transit (
-    inout headers_t hdr,
-    inout local_metadata_t local_metadata,
-    inout standard_metadata_t standard_metadata) {
-
-    direct_counter(CounterType.packets_and_bytes) counter_int_insert;
-    direct_counter(CounterType.packets_and_bytes) counter_int_inst_0003;
-    direct_counter(CounterType.packets_and_bytes) counter_int_inst_0407;
-
-    action int_update_total_hop_cnt() {
-        hdr.int_header.total_hop_cnt = hdr.int_header.total_hop_cnt + 1;
-    }
-
-    action int_transit(switch_id_t switch_id) {
-        local_metadata.int_meta.switch_id = switch_id;
-        local_metadata.int_meta.insert_byte_cnt = (bit<16>) hdr.int_header.ins_cnt << 2;
-    }
-
-    /* Instr Bit 0 */
-    action int_set_header_0() { //switch_id
-        hdr.int_switch_id.setValid();
-        hdr.int_switch_id.switch_id = local_metadata.int_meta.switch_id;
-    }
-    action int_set_header_1() { //port_ids
-        hdr.int_port_ids.setValid();
-        hdr.int_port_ids.ingress_port_id =
-        (bit<16>) standard_metadata.ingress_port;
-        hdr.int_port_ids.egress_port_id =
-        (bit<16>) standard_metadata.egress_port;
-    }
-    action int_set_header_2() { //hop_latency
-        hdr.int_hop_latency.setValid();
-        hdr.int_hop_latency.hop_latency =
-        (bit<32>) standard_metadata.deq_timedelta;
-    }
-    action int_set_header_3() { //q_occupancy
-        // TODO: Support egress queue ID
-        hdr.int_q_occupancy.setValid();
-        hdr.int_q_occupancy.q_id =
-        0;
-        // (bit<8>) standard_metadata.egress_qid;
-        hdr.int_q_occupancy.q_occupancy =
-        (bit<24>) standard_metadata.deq_qdepth;
-    }
-    action int_set_header_4() { //ingress_tstamp
-        hdr.int_ingress_tstamp.setValid();
-        hdr.int_ingress_tstamp.ingress_tstamp =
-        (bit<32>) standard_metadata.enq_timestamp;
-    }
-    action int_set_header_5() { //egress_timestamp
-        hdr.int_egress_tstamp.setValid();
-        hdr.int_egress_tstamp.egress_tstamp =
-        (bit<32>) standard_metadata.enq_timestamp +
-        (bit<32>) standard_metadata.deq_timedelta;
-    }
-    action int_set_header_6() { //q_congestion
-        // TODO: implement queue congestion support in BMv2
-        // TODO: update egress queue ID
-        hdr.int_q_congestion.setValid();
-        hdr.int_q_congestion.q_id =
-        0;
-        // (bit<8>) standard_metadata.egress_qid;
-        hdr.int_q_congestion.q_congestion =
-        // (bit<24>) queueing_metadata.deq_congestion;
-        0;
-    }
-    action int_set_header_7() { //egress_port_tx_utilization
-        // TODO: implement tx utilization support in BMv2
-        hdr.int_egress_tx_util.setValid();
-        hdr.int_egress_tx_util.egress_port_tx_util =
-        // (bit<32>) queueing_metadata.tx_utilization;
-        0;
-    }
-
-    /* action function for bits 0-3 combinations, 0 is msb, 3 is lsb */
-    /* Each bit set indicates that corresponding INT header should be added */
-    action int_set_header_0003_i0() {
-    }
-    action int_set_header_0003_i1() {
-        int_set_header_3();
-    }
-    action int_set_header_0003_i2() {
-        int_set_header_2();
-    }
-    action int_set_header_0003_i3() {
-        int_set_header_3();
-        int_set_header_2();
-    }
-    action int_set_header_0003_i4() {
-        int_set_header_1();
-    }
-    action int_set_header_0003_i5() {
-        int_set_header_3();
-        int_set_header_1();
-    }
-    action int_set_header_0003_i6() {
-        int_set_header_2();
-        int_set_header_1();
-    }
-    action int_set_header_0003_i7() {
-        int_set_header_3();
-        int_set_header_2();
-        int_set_header_1();
-    }
-    action int_set_header_0003_i8() {
-        int_set_header_0();
-    }
-    action int_set_header_0003_i9() {
-        int_set_header_3();
-        int_set_header_0();
-    }
-    action int_set_header_0003_i10() {
-        int_set_header_2();
-        int_set_header_0();
-    }
-    action int_set_header_0003_i11() {
-        int_set_header_3();
-        int_set_header_2();
-        int_set_header_0();
-    }
-    action int_set_header_0003_i12() {
-        int_set_header_1();
-        int_set_header_0();
-    }
-    action int_set_header_0003_i13() {
-        int_set_header_3();
-        int_set_header_1();
-        int_set_header_0();
-    }
-    action int_set_header_0003_i14() {
-        int_set_header_2();
-        int_set_header_1();
-        int_set_header_0();
-    }
-    action int_set_header_0003_i15() {
-        int_set_header_3();
-        int_set_header_2();
-        int_set_header_1();
-        int_set_header_0();
-    }
-
-    /* action function for bits 4-7 combinations, 4 is msb, 7 is lsb */
-    action int_set_header_0407_i0() {
-    }
-    action int_set_header_0407_i1() {
-        int_set_header_7();
-    }
-    action int_set_header_0407_i2() {
-        int_set_header_6();
-    }
-    action int_set_header_0407_i3() {
-        int_set_header_7();
-        int_set_header_6();
-    }
-    action int_set_header_0407_i4() {
-        int_set_header_5();
-    }
-    action int_set_header_0407_i5() {
-        int_set_header_7();
-        int_set_header_5();
-    }
-    action int_set_header_0407_i6() {
-        int_set_header_6();
-        int_set_header_5();
-    }
-    action int_set_header_0407_i7() {
-        int_set_header_7();
-        int_set_header_6();
-        int_set_header_5();
-    }
-    action int_set_header_0407_i8() {
-        int_set_header_4();
-    }
-    action int_set_header_0407_i9() {
-        int_set_header_7();
-        int_set_header_4();
-    }
-    action int_set_header_0407_i10() {
-        int_set_header_6();
-        int_set_header_4();
-    }
-    action int_set_header_0407_i11() {
-        int_set_header_7();
-        int_set_header_6();
-        int_set_header_4();
-    }
-    action int_set_header_0407_i12() {
-        int_set_header_5();
-        int_set_header_4();
-    }
-    action int_set_header_0407_i13() {
-        int_set_header_7();
-        int_set_header_5();
-        int_set_header_4();
-    }
-    action int_set_header_0407_i14() {
-        int_set_header_6();
-        int_set_header_5();
-        int_set_header_4();
-    }
-    action int_set_header_0407_i15() {
-        int_set_header_7();
-        int_set_header_6();
-        int_set_header_5();
-        int_set_header_4();
-    }
-
-    table tb_int_insert {
-        key = {
-            local_metadata.int_meta.sink: exact;
-        }
-        actions = {
-            int_transit;
-        }
-        counters = counter_int_insert;
-        size = 2;
-    }
-
-    /* Table to process instruction bits 0-3 */
-    table tb_int_inst_0003 {
-        key = {
-            hdr.int_header.instruction_mask_0003 : exact;
-        }
-        actions = {
-            int_set_header_0003_i0;
-            int_set_header_0003_i1;
-            int_set_header_0003_i2;
-            int_set_header_0003_i3;
-            int_set_header_0003_i4;
-            int_set_header_0003_i5;
-            int_set_header_0003_i6;
-            int_set_header_0003_i7;
-            int_set_header_0003_i8;
-            int_set_header_0003_i9;
-            int_set_header_0003_i10;
-            int_set_header_0003_i11;
-            int_set_header_0003_i12;
-            int_set_header_0003_i13;
-            int_set_header_0003_i14;
-            int_set_header_0003_i15;
-        }
-        counters = counter_int_inst_0003;
-        size = 16;
-    }
-
-    /* Table to process instruction bits 4-7 */
-    table tb_int_inst_0407 {
-        key = {
-            hdr.int_header.instruction_mask_0407 : exact;
-        }
-        actions = {
-            int_set_header_0407_i0;
-            int_set_header_0407_i1;
-            int_set_header_0407_i2;
-            int_set_header_0407_i3;
-            int_set_header_0407_i4;
-            int_set_header_0407_i5;
-            int_set_header_0407_i6;
-            int_set_header_0407_i7;
-            int_set_header_0407_i8;
-            int_set_header_0407_i9;
-            int_set_header_0407_i10;
-            int_set_header_0407_i11;
-            int_set_header_0407_i12;
-            int_set_header_0407_i13;
-            int_set_header_0407_i14;
-            int_set_header_0407_i15;
-        }
-        counters = counter_int_inst_0407;
-        size = 16;
-    }
-
-    apply {
-        tb_int_insert.apply();
-        tb_int_inst_0003.apply();
-        tb_int_inst_0407.apply();
-        int_update_total_hop_cnt();
-    }
-}
-
-control process_int_outer_encap (
-    inout headers_t hdr,
-    inout local_metadata_t local_metadata,
-    inout standard_metadata_t standard_metadata) {
-
-    action int_update_ipv4() {
-        hdr.ipv4.len = hdr.ipv4.len + local_metadata.int_meta.insert_byte_cnt;
-    }
-    action int_update_udp() {
-        hdr.udp.length_ = hdr.udp.length_ + local_metadata.int_meta.insert_byte_cnt;
-    }
-    action int_update_shim() {
-        hdr.intl4_shim.len = hdr.intl4_shim.len + (bit<8>)hdr.int_header.ins_cnt;
-    }
-
-    apply {
-        if (hdr.ipv4.isValid()) {
-            int_update_ipv4();
-        }
-        if (hdr.udp.isValid()) {
-            int_update_udp();
-        }
-        if (hdr.intl4_shim.isValid()) {
-            int_update_shim();
-        }
-    }
-}
-# 33 "p4_src/int.p4" 2
-# 1 "p4_src/include/int_sink.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* -*- P4_16 -*- */
-
-
-
-control process_int_sink (
-    inout headers_t hdr,
-    inout local_metadata_t local_metadata,
-    inout standard_metadata_t standard_metadata) {
-    action restore_header () {
-        hdr.udp.dst_port = hdr.intl4_tail.dest_port;
-        hdr.ipv4.dscp = (bit<6>)hdr.intl4_tail.dscp;
-    }
-
-    action int_sink() {
-        // restore length fields of IPv4 header and UDP header
-        hdr.ipv4.len = hdr.ipv4.len - (bit<16>)((hdr.intl4_shim.len - (bit<8>)hdr.int_header.ins_cnt) << 2);
-        hdr.udp.length_ = hdr.udp.length_ - (bit<16>)((hdr.intl4_shim.len - (bit<8>)hdr.int_header.ins_cnt) << 2);
-        // remove all the INT information from the packet
-        hdr.int_header.setInvalid();
-        hdr.int_data.setInvalid();
-        hdr.intl4_shim.setInvalid();
-        hdr.intl4_tail.setInvalid();
-        hdr.int_switch_id.setInvalid();
-        hdr.int_port_ids.setInvalid();
-        hdr.int_hop_latency.setInvalid();
-        hdr.int_q_occupancy.setInvalid();
-        hdr.int_ingress_tstamp.setInvalid();
-        hdr.int_egress_tstamp.setInvalid();
-        hdr.int_q_congestion.setInvalid();
-        hdr.int_egress_tx_util.setInvalid();
-    }
-
-    apply {
-       if (local_metadata.int_meta.sink == 1) {
-            restore_header();
-            int_sink();
-        }
-    }
-}
-# 34 "p4_src/int.p4" 2
-# 1 "p4_src/include/int_report.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* -*- P4_16 -*- */
-
-
-
-# 1 "p4_src/include/telemetry_report_headers.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* -*- P4_16 -*- */
-# 22 "p4_src/include/int_report.p4" 2
-
-control process_int_report (
-    inout headers_t hdr,
-    inout local_metadata_t local_metadata,
-    inout standard_metadata_t standard_metadata) {
-
-    action add_report_fixed_header() {
-        /* Device should include its own INT metadata as embedded,
-         * we'll not use local_report_header for this purpose.
-         */
-        hdr.report_fixed_header.setValid();
-        hdr.report_fixed_header.ver = 0;
-        /* only support for flow_watchlist */
-        hdr.report_fixed_header.nproto = NPROTO_ETHERNET;
-        hdr.report_fixed_header.d = 0;
-        hdr.report_fixed_header.q = 0;
-        hdr.report_fixed_header.f = 1;
-        hdr.report_fixed_header.rsvd = 0;
-        //TODO how to get information specific to the switch
-        hdr.report_fixed_header.hw_id = hw_id;
-        // TODO how save a variable and increment
-        hdr.report_fixed_header.seq_no = 0;
-        //TODO how to get timestamp from ingress ns
-        hdr.report_fixed_header.ingress_tstamp = 0;
-
-    }
-
-    action do_report_encapsulation(mac_t src_mac, mac_t mon_mac, ip_address_t src_ip,
-                        ip_address_t mon_ip, l4_port_t mon_port) {
-        //Report Ethernet Header
-        hdr.report_ethernet.setValid();
-        hdr.report_ethernet.dst_addr = mon_mac;
-        hdr.report_ethernet.src_addr = src_mac;
-        hdr.report_ethernet.ether_type = 0x0800;
-
-        //Report IPV4 Header
-        hdr.report_ipv4.setValid();
-        hdr.report_ipv4.version = 4w4;
-        hdr.report_ipv4.ihl = 4w5;
-        hdr.report_ipv4.dscp = 6w0;
-        hdr.report_ipv4.ecn = 2w0;
-        /* Total Len is report_ipv4_len + report_udp_len + report_fixed_hdr_len + ethernet_len + ipv4_totalLen */
-        hdr.report_ipv4.len = 20 + 8 + report_fixed_header_len + 14 + hdr.ipv4.len;
-        /* Dont Fragment bit should be set */
-        hdr.report_ipv4.identification = 0;
-        hdr.report_ipv4.flags = 0;
-        hdr.report_ipv4.frag_offset = 0;
-        hdr.report_ipv4.ttl = 0xFF;
-        hdr.report_ipv4.protocol = 8w17;
-        hdr.report_ipv4.src_addr = src_ip;
-        hdr.report_ipv4.dst_addr = mon_ip;
-
-        //Report UDP Header
-        hdr.report_udp.setValid();
-        hdr.report_udp.src_port = 0;
-        hdr.report_udp.dst_port = mon_port;
-        hdr.report_udp.length_ = 8 + report_fixed_header_len + 14 + hdr.ipv4.len;
-
-        add_report_fixed_header();
-    }
-
-    /* Cloned packet instance_type is PKT_INSTANCE_TYPE_INGRESS_CLONE=1
-     * Packet is forwarded according to the mirroring_add command
-     */
-    table tb_generate_report {
-        key = {
-            standard_metadata.instance_type: exact;
-        }
-        actions = {
-            do_report_encapsulation;
-        }
-    }
-
-    apply {
-        tb_generate_report.apply();
-    }
-}
-# 35 "p4_src/int.p4" 2
-# 1 "p4_src/include/srv6_transit.p4" 1
+# 25 "p4_src/srv6_int.p4" 2
+# 1 "p4_src/include_new/srv6_int_transit.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2530,7 +1442,7 @@ control process_int_report (
 
 
 
-# 1 "p4_src/include/headers.p4" 1
+# 1 "p4_src/include_new/headers.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2546,8 +1458,8 @@ control process_int_report (
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 21 "p4_src/include/srv6_transit.p4" 2
-# 1 "p4_src/include/defines.p4" 1
+# 21 "p4_src/include_new/srv6_int_transit.p4" 2
+# 1 "p4_src/include_new/defines.p4" 1
 /*
  * Copyright 2017-present Open Networking Foundation
  *
@@ -2563,47 +1475,9 @@ control process_int_report (
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-# 22 "p4_src/include/srv6_transit.p4" 2
-# 1 "p4_src/include/int_definitions.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+# 22 "p4_src/include_new/srv6_int_transit.p4" 2
 
-/* -*- P4_16 -*- */
-# 23 "p4_src/include/srv6_transit.p4" 2
-# 1 "p4_src/include/int_headers.p4" 1
-/*
- * Copyright 2017-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* -*- P4_16 -*- */
-# 24 "p4_src/include/srv6_transit.p4" 2
-
-control srv6_ingress(inout headers_t hdr,
+control srv6_int_ingress(inout headers_t hdr,
                 inout local_metadata_t local_metadata,
                 inout standard_metadata_t standard_metadata) {
 
@@ -2657,7 +1531,8 @@ control srv6_ingress(inout headers_t hdr,
 
     action insert_srh(bit<8> num_segments){
         hdr.srh.setValid();
-        hdr.srh.next_hdr = hdr.ipv6.next_hdr;
+        // hdr.srh.next_hdr = hdr.ipv6.next_hdr;
+        hdr.srh.next_hdr = 253;
         hdr.srh.hdr_ext_len = num_segments * 2;
         hdr.srh.routing_type = 4;
         hdr.srh.segment_left = num_segments - 1;
@@ -2728,22 +1603,25 @@ control srv6_ingress(inout headers_t hdr,
     action srv6_pop(){
         hdr.ipv6.next_hdr = hdr.srh.next_hdr;
         bit<16> srh_size = (((bit<16>)hdr.srh.last_entry + 1) << 4) + 8;
-        hdr.ipv6.payload_len = hdr.ipv6.payload_len - srh_size;
+        // hdr.ipv6.payload_len = hdr.ipv6.payload_len - srh_size;
 
-        hdr.srh.setInvalid();
-        hdr.segment_list[0].setInvalid();
-        hdr.segment_list[1].setInvalid();
-        hdr.segment_list[2].setInvalid();
-        hdr.segment_list[3].setInvalid();
-        hdr.segment_list[4].setInvalid();
-        hdr.segment_list[5].setInvalid();
+        // hdr.srh.setInvalid();
+        // hdr.segment_list[0].setInvalid();
+        // hdr.segment_list[1].setInvalid();
+        // hdr.segment_list[2].setInvalid();
+        // hdr.segment_list[3].setInvalid();
+        // hdr.segment_list[4].setInvalid();
+        // hdr.segment_list[5].setInvalid();
     }
 
-
+    //int
+    action set_next_int_header(){
+        hdr.srh.next_hdr = 253;
+    }
 
     apply {
 
-
+        set_next_int_header();
         if (standard_metadata.ingress_port == CPU_PORT) {
          // Receive packets from controller, namely packet_out message.
          // Directly tell switch where the port packets sent to.
@@ -2770,6 +1648,8 @@ control srv6_ingress(inout headers_t hdr,
         transit_table.apply();
        }
 
+
+
        routing_v6_table.apply();
 
        if(hdr.ipv6.hop_limit == 0){
@@ -2782,9 +1662,35 @@ control srv6_ingress(inout headers_t hdr,
      }
 }
 
-control srv6_egress(inout headers_t hdr,
+control srv6_int_egress(inout headers_t hdr,
                inout local_metadata_t local_metadata,
                inout standard_metadata_t standard_metadata) {
+
+    action add_swtrace(switchID_t swid) {
+        hdr.nodeCount.count = hdr.nodeCount.count + 1;
+        hdr.INT.push_front(1);
+        hdr.INT[0].setValid();
+        hdr.INT[0].swid = swid;
+        hdr.INT[0].ingress_port = (ingress_port_t)standard_metadata.ingress_port;
+        hdr.INT[0].ingress_global_timestamp = (ingress_global_timestamp_t)standard_metadata.ingress_global_timestamp;
+        hdr.INT[0].egress_port = (egress_port_t)standard_metadata.egress_port;
+        hdr.INT[0].egress_spec = (egressSpec_t)standard_metadata.egress_spec;
+        hdr.INT[0].egress_global_timestamp = (egress_global_timestamp_t)standard_metadata.egress_global_timestamp;
+        hdr.INT[0].enq_timestamp = (enq_timestamp_t)standard_metadata.enq_timestamp;
+        hdr.INT[0].enq_qdepth = (enq_qdepth_t)standard_metadata.enq_qdepth;
+        hdr.INT[0].deq_timedelta = (deq_timedelta_t)standard_metadata.deq_timedelta;
+        hdr.INT[0].deq_qdepth = (deq_qdepth_t)standard_metadata.deq_qdepth;
+
+        // hdr.ipv4.totalLen = hdr.ipv4.totalLen + 32;
+    }
+
+    table swtrace {
+        actions = {
+         add_swtrace;
+         NoAction;
+        }
+        default_action = NoAction();
+    }
 
     apply {
         if (standard_metadata.egress_port == CPU_PORT) {
@@ -2795,63 +1701,39 @@ control srv6_egress(inout headers_t hdr,
             hdr.packet_in.ingress_port = standard_metadata.ingress_port;
 
         }
+        if (hdr.nodeCount.isValid()) {
+            swtrace.apply();
+        }
     }
 }
-# 36 "p4_src/int.p4" 2
+# 26 "p4_src/srv6_int.p4" 2
 
-control int_ingress (
+
+control snt_ingress (
     inout headers_t hdr,
     inout local_metadata_t local_metadata,
     inout standard_metadata_t standard_metadata) {
 
     apply {
-        srv6_ingress.apply(hdr, local_metadata, standard_metadata);
-        port_counters_ingress.apply(hdr, standard_metadata);
-        packetio_ingress.apply(hdr, standard_metadata);
-        table0_control.apply(hdr, local_metadata, standard_metadata);
-        process_set_source_sink.apply(hdr, local_metadata, standard_metadata);
-        if(local_metadata.int_meta.sink == 1) {
-            // clone packet for Telemetry Report
-
-
-
-        }
+        srv6_int_ingress.apply(hdr, local_metadata, standard_metadata);
     }
 }
 
-control int_egress (
+control snt_egress (
     inout headers_t hdr,
     inout local_metadata_t local_metadata,
     inout standard_metadata_t standard_metadata) {
 
     apply {
-        if (standard_metadata.ingress_port != CPU_PORT &&
-            standard_metadata.egress_port != CPU_PORT &&
-            (hdr.udp.isValid() || hdr.tcp.isValid())) {
-            if (local_metadata.int_meta.sink == 0 && local_metadata.int_meta.source == 1) {
-                process_int_source.apply(hdr, local_metadata, standard_metadata);
-            }
-            if(hdr.int_header.isValid()) {
-                process_int_transit.apply(hdr, local_metadata, standard_metadata);
-                /* update underlay header based on INT information inserted */
-                process_int_outer_encap.apply(hdr, local_metadata, standard_metadata);
-                /* send int report */
-                process_int_report.apply(hdr, local_metadata, standard_metadata);
-                /* int sink */
-                process_int_sink.apply(hdr, local_metadata, standard_metadata);
-            }
-        }
-        srv6_egress.apply(hdr, local_metadata, standard_metadata);
-        port_counters_egress.apply(hdr, standard_metadata);
-        packetio_egress.apply(hdr, standard_metadata);
+        srv6_int_egress.apply(hdr, local_metadata, standard_metadata);
     }
 }
 
 V1Switch(
-    int_parser(),
+    srv6_int_parser(),
     verify_checksum_control(),
-    int_ingress(),
-    int_egress(),
+    snt_ingress(),
+    snt_egress(),
     compute_checksum_control(),
-    int_deparser()
+    srv6_int_deparser()
 ) main;

@@ -1,7 +1,7 @@
 P4_PROGRAM := int
 P4_JSON = $(P4_PROGRAM).json
 
-build: p4c -b bmv2 p4_src/int.p4 -o p4_src/build
+build: p4c -b bmv2 p4_src/srv6_int.p4 -o p4_src/build
 
 start: build
 	   sudo bash

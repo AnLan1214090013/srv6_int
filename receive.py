@@ -59,6 +59,8 @@ from scapy.all import *
 
 
 
-pkt = sniff(iface="veth3", count=1)
+pkt = sniff(iface="veth5", count=1)
 for i in pkt:
     i.show()
+    print(i.load)
+    hexdump(i)
