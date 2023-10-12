@@ -160,9 +160,11 @@ control srv6_ingress(inout headers_t hdr,
 
 
 
+
+
     apply {
         
-        
+        set_next_int_header();
         if (standard_metadata.ingress_port == CPU_PORT) {
         	// Receive packets from controller, namely packet_out message.
         	// Directly tell switch where the port packets sent to.
